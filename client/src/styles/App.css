@@ -1,0 +1,92 @@
+/* container */
+.container {
+  width: 1280px;
+  margin: 0 auto;
+  height: inherit;
+
+  text-align: center;
+}
+#nav {
+  background-color: white;
+  height: 4rem;
+  display: grid;
+  place-items: center;
+  box-shadow: rgb(4 17 29 / 25%) 0px 0px 11px 0px;
+  position: relative;
+}
+main {
+  height: 46.9rem
+} 
+footer {
+  height: 6rem;
+  background-color: rgb(243, 251, 254);
+  box-shadow: rgb(4 17 29 / 25%) 0px 0px 11px 0px;
+  position: sticky;
+}
+
+/* nav */
+#nav_title {
+  position: absolute; top: 10px; left: 10px;
+  font-weight: 510;
+  font-size: 1.5rem;
+  
+}
+.nav_tittle_picture {
+  width: 55px;
+  height: 45px;
+  vertical-align: middle;
+}
+.nav_tittle_name {
+  vertical-align: middle;
+  font-weight: 510;
+  font-size: 1.5rem;
+  position: relative;
+  bottom: 13px; 
+  color: #f03e3e;
+  font-family: Fugaz One;
+}
+#nav_menu {
+  margin: 1.5rem;
+  
+  position: absolute;
+  transition: all 0.5s ease-out;
+}
+#nav_menu :hover {
+  color: black;
+  transition: all 0.5s ease-out;
+}
+.navTit{
+  font-weight: 500;
+  color: rgba(4, 17, 29, 0.75);
+  margin-right: 20px;
+}
+
+#nav_support {
+  margin: 1.5rem;
+  right: 40px;
+  position: absolute;
+  transition: all 0.5s ease-out;
+}
+
+
+.nav_wallet{
+  position: absolute; top: 12px; right: 10px;
+  
+}
+.nav_wallet:hover {
+  cursor:pointer;
+}
+
+/* footer */
+footer span {
+  text-shadow: 1px 1px 1px rgb(229, 232, 235);
+  color: rgb(201, 186, 186);
+}
+footer span:last-child {
+  font-weight: lighter;
+  float: right;
+}
+#footer {
+  margin-top: 80px;
+  padding: 15px;
+}
