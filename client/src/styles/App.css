@@ -25,18 +25,18 @@ footer {
 }
 
 /* nav */
-#nav_title {
+#nav__title {
   position: absolute; top: 10px; left: 10px;
   font-weight: 510;
   font-size: 1.5rem;
   
 }
-.nav_tittle_picture {
+.nav__tittle__picture {
   width: 55px;
   height: 45px;
   vertical-align: middle;
 }
-.nav_tittle_name {
+.nav__tittle__name {
   vertical-align: middle;
   font-weight: 510;
   font-size: 1.5rem;
@@ -45,13 +45,13 @@ footer {
   color: #f03e3e;
   font-family: Fugaz One;
 }
-#nav_menu {
+#nav__menu {
   margin: 1.5rem;
   
   position: absolute;
   transition: all 0.5s ease-out;
 }
-#nav_menu :hover {
+#nav__menu :hover {
   color: black;
   transition: all 0.5s ease-out;
 }
@@ -61,7 +61,7 @@ footer {
   margin-right: 20px;
 }
 
-#nav_support {
+#nav__support {
   margin: 1.5rem;
   right: 40px;
   position: absolute;
@@ -69,11 +69,11 @@ footer {
 }
 
 
-.nav_wallet{
+.nav__wallet{
   position: absolute; top: 12px; right: 10px;
   
 }
-.nav_wallet:hover {
+.nav__wallet:hover {
   cursor:pointer;
 }
 
