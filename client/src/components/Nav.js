@@ -15,15 +15,15 @@ function Nav() {
         </Link>
       </div>
       <div id="nav_menu">
-        <Link to="/Campaign" className="navTit">Campaign</Link>
-        <Link to="/Nft" className="navTit">NFT</Link>
-        <Link to="/Mypage" className="navTit">Mypage</Link>
+        <Link to="/campaign" className="navTit">Campaign</Link>
+        <Link to="/nft" className="navTit">NFT</Link>
+        <Link to="/mypage" className="navTit">Mypage</Link>
         
       </div>
       <div id="nav_support">
         
-          <Link to="/Support" className="navTit">Support</Link> 
-          <Link to="CreateNFT" className="navTit">CreateNFT</Link>
+          <Link to="/support/coin" className="navTit">SupportCoin</Link> 
+          <Link to="/support/NFT" className="navTit">SupportNFT</Link>
         </div>
         <span className="nav_wallet">
           <img src={img_wallet} onClick={()=>{getAccount()}}/>

@@ -9,8 +9,8 @@ import Campaign from "./pages/Campaign";
 import Home from "./pages/Home";
 import Mypage from "./pages/Mypage";
 import Nft from "./pages/Nft";
-import Support from "./pages/Support";
-import CreateNFT from "./pages/CreateNFT";
+import SupportCoin from "./pages/SupportCoin";
+import SupportNFT from "./pages/SupportNFT";
 
 function App() {
   return (
@@ -22,11 +22,11 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/" element={<Home />}/>
-            <Route path="/Campaign/*" element={<Campaign />} />
-            <Route path="/Nft/*" element={<Nft />} />
-            <Route path="/Mypage/*" element={<Mypage />} /> 
-            <Route path="/Support/*" element={<Support />} />
-            <Route path="/CreateNFT/*" element={<CreateNFT />} />
+            <Route path="/campaign/*" element={<Campaign />} />
+            <Route path="/nft/*" element={<Nft />} />
+            <Route path="/mypage/" element={<Mypage />} /> 
+            <Route path="/support/coin" element={<SupportCoin />} />
+            <Route path="/support/NFT" element={<SupportNFT />} />
           </Routes>
         </div>
       </main>
