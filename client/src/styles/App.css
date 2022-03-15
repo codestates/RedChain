@@ -1,9 +1,8 @@
 /* container */
 .container {
-  width: 1280px;
+  /* width: 1280px; */
   margin: 0 auto;
   height: inherit;
-
   text-align: center;
 }
 #nav {
@@ -18,7 +17,7 @@ main {
   height: 46.9rem
 } 
 footer {
-  height: 6rem;
+  height: 3rem;
   background-color: rgb(243, 251, 254);
   box-shadow: rgb(4 17 29 / 25%) 0px 0px 11px 0px;
   position: sticky;
@@ -29,7 +28,6 @@ footer {
   position: absolute; top: 10px; left: 10px;
   font-weight: 510;
   font-size: 1.5rem;
-  
 }
 .nav__tittle__picture {
   width: 55px;
@@ -47,7 +45,6 @@ footer {
 }
 #nav__menu {
   margin: 1.5rem;
-  
   position: absolute;
   transition: all 0.5s ease-out;
 }
@@ -71,7 +68,6 @@ footer {
 
 .nav__wallet{
   position: absolute; top: 12px; right: 10px;
-  
 }
 .nav__wallet:hover {
   cursor:pointer;
@@ -89,4 +85,50 @@ footer span:last-child {
 #footer {
   margin-top: 80px;
   padding: 15px;
+}
+
+/* home */
+/* color:#f36464; */
+#home_title {
+  margin: 2rem;
+  font-size: 1.8rem;
+}
+#home_title div{
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: gray;
+}
+#home_support {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  display: flex;
+  height: 210px;
+}
+.home__support {
+  flex: 1;
+  width: 30%;
+}
+.home__support__title {
+  margin-top: 30px;
+  width: 100%;
+  height: 60%;
+}
+.home__support__title img{
+  width: 55px;
+  height: 55px;
+  /*color: #f03e3e; */
+}
+.home__support__title div {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: gray;
+}
+.home__support__contents {
+  /* font-size: 1.5rem; */
+}
+.home__support__contents span {
+  font-size: 1.5rem;
+  margin: 0.5rem;
 }
