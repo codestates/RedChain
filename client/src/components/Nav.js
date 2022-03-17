@@ -3,8 +3,7 @@ import React,{useRef, useState} from "react";
 import "../styles/App.css"
 import img_logo from "../assets/redChain.png"
 import img_wallet from "../assets/wallet.png"
-import getAccount from "./getAccount";
-
+import {getAccount} from "../Klaytn/KIP17"
 
 
 function Nav() {
@@ -48,7 +47,7 @@ function Nav() {
         </ul>
         </div>
       <div className="nav__wallet">
-        <img src={img_wallet} onClick={()=>{getAccount()}}/>
+        <img src={img_wallet} onClick={getAccount}/>
       </div>
     </div>
   )
