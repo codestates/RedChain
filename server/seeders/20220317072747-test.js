@@ -2,6 +2,10 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
+
+    await queryInterface.bulkInsert(`users`,[{
+      account:'master',name:'red',amount:'999'}],{})
+    
     /**
      * Add seed commands here.
      *
