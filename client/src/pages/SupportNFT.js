@@ -10,10 +10,8 @@ function SupportNFT() {
   const [errImgList, setErrImgList] = useState({});
 
   const donation = async (contractAddress, tokenId) => {
-    await window.klaytn._kaikas.isApproved()
-    .then() //컨트렉트,토큰id로 transferfom함수 실행
-    // 기부 API
-  }
+    // await window.klaytn._kaikas.isApproved()
+    // .then() 
 
   const onErrorImg = async (e, tokenUri) => {
     const index = e.target.alt

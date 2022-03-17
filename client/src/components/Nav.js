@@ -18,6 +18,7 @@ function Nav() {
     console.log("menuList: "+menuList.current.style.display);
   }
 
+  
   return(
     <div id="nav">
       <div id="nav-title">

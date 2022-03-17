@@ -1,5 +1,6 @@
 import "../styles/SupportNFT.css"
 
+
 const Card = ({NFT, idx, onErrorImg, donation}) => {
 
   const support = () => {
