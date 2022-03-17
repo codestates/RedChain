@@ -1,31 +1,22 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React,{useRef, useState} from "react";
 import "../styles/App.css"
 import img_logo from "../assets/redChain.png"
 import img_wallet from "../assets/wallet.png"
 import getAccount from "./getAccount";
 
-const dropdownBtn = document.querySelector(".dropdown__toggle");
-const menuList = document.querySelector(".dropdown__menu");
+
 
 function Nav() {
-  // // dropdownBtn 클릭하면, menuList 나온다
-  // dropdownBtn.addEventListener("click", function () {
-  //   menuList.classList.toggle("show");
-  // });
-
-  // // menuList는 사라진다
-  // dropdownBtn.addEventListener("blur", function () {
-  //   menuList.classList.remove("show");
-  // });
-
+  const menuList = useRef(null);
+  
   const dropdownChek = () => {
-    if(menuList.style.display === "block") {
-      menuList.style.display = "none";
+    if(menuList.current.style.display === "block") {
+      menuList.current.style.display = "none";
     } else {
-      menuList.style.display = "block";
+      menuList.current.style.display = "block";
     }
-    console.log("menuList: "+menuList.style.display);
+    console.log("menuList: "+menuList.current.style.display);
   }
 
   return(
@@ -43,7 +34,7 @@ function Nav() {
       </div>
       <div id="nav__support" className="dropdown">
         <button type="button" className="dropdown__toggle" onClick={dropdownChek}>Support ▾</button>
-        <ul className="dropdown__menu" >
+        <ul ref={menuList} className="dropdown__menu" >
           <li className="dropdown__item">
             <Link to="/support/coin" > {/* className="navTit" */}
               <button type="button" className="dropdown__option" onClick={dropdownChek}>Coin</button>
@@ -55,7 +46,7 @@ function Nav() {
             </Link>
           </li>
         </ul>
-      </div>
+        </div>
       <div className="nav__wallet">
         <img src={img_wallet} onClick={()=>{getAccount()}}/>
       </div>
