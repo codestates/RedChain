@@ -1,0 +1,52 @@
+/* #supNFT-title {
+  margin-top: 8rem;
+  font-size: 1.8rem;
+}
+#supNFT-title div{
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: gray;
+}
+#supNFT-content {
+  max-width: 900px;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  display: flex;
+  height: 210px;
+} */
+
+
+
+
+/* card */
+.card {
+  /* color: white;
+  background-color: #1a1c1e; */
+  background-color: #fff;
+  color: rgba(4, 17, 29, 0.75);
+  border: solid 1px gray;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 240px;  /* 220 -> 240 */
+  height: 400px;
+  float: left;
+  margin: 18px;
+  transition: box-shadow 0.25s ease-in-out;
+}
+.card__img img{
+  width: 100%;
+  height: 300px;
+
+}
+.card__content {
+  width: 100%;
+  height: 100%;
+}
+.card__name {
+  text-align: left;
+  padding-left: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}

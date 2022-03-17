@@ -16,13 +16,16 @@
 }
 main {
   margin-top: 5rem;
-  height: 46.9rem
+  margin-bottom: 5rem;
+  height: 100%;
 } 
 footer {
+  width: 100%;
   height: 3rem;
-  background-color: rgb(243, 251, 254);
-  box-shadow: rgb(4 17 29 / 25%) 0px 0px 11px 0px;
-  position: sticky;
+  position: absolute;
+  bottom: -500px;
+  left: 0;
+  
 }
 
 /* nav */
@@ -160,8 +163,11 @@ footer span:last-child {
   float: right;
 }
 #footer {
-  margin-top: 20px;
+  background-color: rgb(243, 251, 254);
+  box-shadow: rgb(4 17 29 / 25%) 0px 0px 11px 0px;
+  margin-top: 30px;
   padding: 15px;
+  height: 3rem;
 }
 
 

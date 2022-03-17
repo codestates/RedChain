@@ -19,7 +19,6 @@ function Nav() {
   //   menuList.classList.remove("show");
   // });
 
-
   const dropdownChek = () => {
     if(menuList.style.display === "block") {
       menuList.style.display = "none";
@@ -56,7 +55,6 @@ function Nav() {
             </Link>
           </li>
         </ul>
-
       </div>
       <div className="nav__wallet">
         <img src={img_wallet} onClick={()=>{getAccount()}}/>
