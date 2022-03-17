@@ -12,6 +12,7 @@ function SupportNFT() {
   const donation = async (contractAddress, tokenId) => {
     // await window.klaytn._kaikas.isApproved()
     // .then() 
+  }
 
   const onErrorImg = async (e, tokenUri) => {
     const index = e.target.alt
