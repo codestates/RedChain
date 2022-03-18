@@ -4,4 +4,5 @@ module.exports = {
     orderbook: require('./orderbook'),
     auction: require('./auction'),
     auctionDetails: require('./auctionDetails'),
+    support: require('./support'),
 }

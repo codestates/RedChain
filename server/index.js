@@ -5,13 +5,16 @@ const port = 4000;
 
 const indexRoute = require('./routes');
 
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000",
+    creadentials:true,
+    }));
 app.use(express.json());
 app.use('/', indexRoute);
 
 
 app.listen(port, () => {
-    console.log("Listening... 4000port");
+    console.log(`Listening... ${port}port`);
 })
 
 module.exports = app;
