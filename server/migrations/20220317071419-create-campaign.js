@@ -8,16 +8,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
+      account: {
+        type: Sequelize.INTEGER
       },
-      createdAt: {
-        allowNull: false,
+      title: {
+        type: Sequelize.INTEGER
+      },
+      endtime: {
         type: Sequelize.DATE
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      goal: {
+        type: Sequelize.INTEGER
+      },
+      status: {
+        type: Sequelize.BOOLEAN
       }
     });
   },
