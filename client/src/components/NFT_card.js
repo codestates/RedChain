@@ -15,9 +15,9 @@ const Card = ({NFT, idx, onErrorImg, donation}) => {
              alt={idx}/>
       </div>
       <div className="card__content">
-        <div className="card__name">{NFT.contractAddress}</div>
+        {/* <div className="card__name">{NFT.contractAddress}</div> */}
         {/* <div className="card__description"></div> */}
-        <button type="button" onClick ={support}>Support</button>
+        <button type="button" className="card__button" onClick ={support}>Support</button>
       </div>
     </div>
   )
