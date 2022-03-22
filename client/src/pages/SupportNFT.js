@@ -67,7 +67,7 @@ function SupportNFT() {
           <h1>No NFT to display</h1>
           :
           NFTList.map((NFT,idx) => {
-            return <Card NFT={NFT} idx={idx} key={idx} onErrorImg={onErrorImg} donation={donation} />  /*  */
+            return <Card NFT={NFT} idx={idx} key={idx} onErrorImg={onErrorImg} action={donation} text={"Support"}/>  /*  */
           })
         }
       </div>

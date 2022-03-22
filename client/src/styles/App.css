@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 /* container */
 .container {
   margin: 0 auto;
@@ -5,88 +11,95 @@
   text-align: center;
 }
 nav {
-  width: 100%;
+  background: #fff;
   height: 4rem;
-}
-#nav {
-  position: fixed;
-  top: 0px;
-  width: 100%;
-  height: 4rem;
-  display: grid;
-  background-color: white;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;   /* z-index */
   box-shadow: rgb(4 17 29 / 25%) 0px 0px 11px 0px;
 }
 main {
   margin-top: 4rem;
-  padding-bottom: 3rem;
-  min-height: 100%;
-  height: auto;
+  padding-bottom: 3rem; 
+  min-height: 50rem;
 } 
 footer {
   width: 100%;
-  height: 3rem;
-  position: relative;
-  /* transform: translateY(-100%); */
-}
+  height: 3rem; 
+  display: flex;
+  align-content:end;
+} 
 
 /* nav */
-#nav-title {
-  position: absolute; top: 10px; left: 10px;
-  font-weight: 510;
-  font-size: 1.5rem;
+#nav {
+  height: 4rem;
+  display: flex;
+  align-items: center;
 }
-.nav-title__picture {
-  width: 55px;
-  height: 45px;
+#nav-title {
+  justify-self: start;
+  margin-left: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+  align-items: center;
+  width: 12rem;
 }
 .nav-title__name {
   vertical-align: middle;
   font-weight: 510;
   font-size: 1.5rem;
   position: relative;
-  bottom: 13px; 
+  bottom: 5px;
   color: #f03e3e;
   font-family: Fugaz One;
 }
+.nav-title__picture {
+  width: 55px;
+  height: 45px;
+  position: relative;
+  top: 5px;
+}
 #nav__menu {
-  margin: 1.5rem;
-  position: absolute;
-  transition: all 0.5s ease-out;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  width: 60vw;
+  justify-content: center;
 }
-#nav__menu :hover {
-  color: black;
-  transition: all 0.5s ease-out;
+.navTit {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 1.2rem 1rem;
+  height: 100%;
 }
-.navTit{
-  font-weight: 500;
-  color: rgba(4, 17, 29, 0.75);
-  margin-right: 20px;
-}
-.navTit{
-  font-weight: 500;
-  color: rgba(4, 17, 29, 0.75);
+.navTit:hover {
+  color: #f03e3e;
+  font-size: 1.1rem;
+  border-bottom: 3px solid #f03e3e;
+  transition: all 0.2s ease-out;
 }
 
 #nav__support {
-  margin: 2rem;
-  padding: 5px;
-  right: 40px;
-  position: absolute;
-  transition: all 0.5s ease-out;
+  display: grid;
+  justify-content: end;
+  margin-right: 2rem;
 }
-
 .nav__wallet{
-  position: absolute; top: 12px; right: 10px;
+  display: grid;
+  justify-content: end;
+  margin-right: 1rem;
 }
 .nav__wallet:hover {
   cursor:pointer;
 }
 
-
 button {
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
   font-size: 15px;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -103,11 +116,9 @@ button:active {
 }
 .dropdown {
   position: relative;
-  z-index: 1;
+  z-index: 1;       /* z-index */
   width: 110px;
-  margin-bottom: 8px;
 }
-
 .dropdown__toggle {
   width: 100%;
   height: 40px;
@@ -117,12 +128,10 @@ button:active {
   border-radius: 6px;
   transition: border-color 100ms ease-in;
 }
-
 .dropdown__toggle:active {  /* 누르고 있는 순간. */
   border-color: rgba(224, 226, 231, 1);
   color: black;
 }
-
 .dropdown__menu {
   display: none;
   position: absolute;
@@ -133,10 +142,10 @@ button:active {
   z-index: 2;
   left: 0;
   width: 100%;
+  margin-top: 5px;
   transition: border-color 200ms ease-in, padding 200ms ease-in,
     max-height 200ms ease-in, box-shadow 200ms ease-in;
 }
-
 .dropdown__option {
   background-color: #fff;
   color: #3f4150;
@@ -146,8 +155,8 @@ button:active {
   line-height: 44px;
   text-align: center;
   font-weight: 500; 
+  border-radius: 3px;
 }
-
 .dropdown__option:hover {
   background-color: #babbc1;
   color: #fff;
@@ -164,10 +173,12 @@ footer span:last-child {
   float: right;
 }
 #footer {
+  width: 100%;
+  height: 100%;
   background-color: rgb(243, 251, 254);
   box-shadow: rgb(4 17 29 / 25%) 0px 0px 11px 0px;
-  margin-top: 30px;
   padding: 15px;
+  margin-top: 1rem;
 }
 
 
@@ -208,9 +219,6 @@ footer span:last-child {
   font-size: 1.1rem;
   color: gray;
 }
-/* .home-content__contents {
-   
-} */
 .home-content__contents span {
   font-size: 1.5rem;
   margin: 0.5rem;
