@@ -3,15 +3,33 @@ import "../styles/SupportNFT.css"
 import Card from "../components/NFT_card";
 import axios from "axios";
 import {getAccount, classify} from "../Klaytn/KIP17"
+import Caver from 'caver-js';
+import ABI from '../Klaytn/ABI'
 
 function SupportNFT() {
+  const [account, setAccount] = useState(null);
 
   const [NFTList, setNFTList] = useState([]);
   const [errImgList, setErrImgList] = useState({});
 
   const donation = async (contractAddress, tokenId) => {
-    // await window.klaytn._kaikas.isApproved()
-    // .then() 
+    const token = tokenId.slice(2);
+    console.log(token);
+    await window.klaytn._kaikas.isApproved()
+    .then(async(res) => {
+      if(res) {
+       const from = (window.klaytn.selectedAddress)
+       const to = '0x3d7a899250aDBaA826A45603da5240f1ca12C88F'.toLowerCase(); 
+       const caver = new Caver(window.klaytn);
+       const kip17 = new caver.klay.Contract(ABI, contractAddress)
+       await kip17.methods.transferFrom(from, to, token)
+       .send({
+         from,
+         gas: '8500000',
+         gasPrice: null,
+       })
+      }
+    })
   }
 
   const onErrorImg = async (e, tokenUri) => {
@@ -52,6 +70,7 @@ function SupportNFT() {
 
   useEffect(async() => {
     const EOA = await getAccount();
+    setAccount(EOA);
     await getNFTInfo(EOA);
   },[])
 
