@@ -6,6 +6,7 @@ import './styles/reset.css';
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Campaign from "./pages/Campaign";
+import Campaign_Detail from "./pages/Campaign_Detail";
 import Home from "./pages/Home";
 import Mypage from "./pages/Mypage";
 import NftAuction from "./pages/NftAuction";
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/campaign/*" element={<Campaign />} />
+            <Route path="/campaign/detail/:id" element={<Campaign_Detail/>}/>
             <Route path="/nft/auction" element={<NftAuction />} />
             <Route path="/nft/auction/:no" element={<NftAuctionView />} />
             <Route path="/nft/seal" element={<NftSeal />} />
