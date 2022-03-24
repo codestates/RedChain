@@ -3,7 +3,6 @@ import React,{useEffect, useRef, useState} from "react";
 import "../styles/App.css"
 import img_logo from "../assets/redChain.png"
 import img_wallet from "../assets/wallet.png"
-import {getAccount} from "../Klaytn/KIP17"
 
 
 function Nav() {
@@ -46,7 +45,6 @@ function Nav() {
         <Link to="/campaign" className="navTit">Campaign</Link>
         <Link to="/nft/auction" className="navTit">Auction</Link>
         <Link to="/nft/seal" className="navTit">Seal</Link>
-        <Link to="/mypage" className="navTit">Mypage</Link>
       </div>
       {button &&
         <>
@@ -66,7 +64,9 @@ function Nav() {
             </ul>
             </div>
           <div className="nav__wallet">
-            <img src={img_wallet} onClick={getAccount}/>
+            <Link to="/mypage">
+              <img src={img_wallet}/>
+            </Link>
           </div>
         </>
       }
