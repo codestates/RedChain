@@ -5,6 +5,10 @@ import{FaChevronLeft, FaChevronRight} from 'react-icons/fa';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Campaign_Card from "../components/Campaign_Card";
+import klaytn_logo from "../assets/klaytn.png"
+import redChain from "../assets/redChain.png"
+
+
 
 
 function Campaign() {
@@ -69,6 +73,8 @@ function Campaign() {
    })
   }
 
+
+
   useEffect(async() => {
    await getCampaignInfo();
   },[])
@@ -105,21 +111,26 @@ function Campaign() {
           
           <FaChevronRight onClick={nextBtn} className="campaign-items-chevron"/>
       </div>
+      <div className="campaign-banner">
+        <img src={`/campaign-banner.jpeg`}></img>
+      </div>
+      <div className="campaign-subscribe">
+          <div>
+              <img className="campaign-logo-img" src={redChain}></img>
+          </div>
+          <div className="campaign-subscribe-email-wrap">
+              <h2>레드체인 새로운 소식 구독하기</h2>
+              <div >
+                <input className="campaign-subscribe-email"></input>
+                <button type="email" className="campaign-subscribe-button">소식받아보기</button>
+              </div>
+          </div>
+          <div>
+              <img className="campaign-logo-img" src={klaytn_logo}></img>
+          </div>
+      </div>
     </div>
   );
 }
 
 export default Campaign;
-
-/* 
-    <li className="campaign-items-side"
-              style={{backgroundImage:`url(/campaignImg/${rightItem.id}.jpeg)`}}>우측캠페인
-                      <div className="campaign-item-info">
-                        <h1>{rightItem.title}</h1>
-                        <p>{rightItem.group}</p>
-                        <p>D-Day: {rightItem.dday}</p>
-                        <progress value="17" max="100"></progress>
-                        <p>{rightItem.amount}</p>
-                      </div>
-              </li>
-*/
