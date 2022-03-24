@@ -29,9 +29,9 @@ function App() {
             <Route path="/campaign/*" element={<Campaign />} />
             <Route path="/campaign/detail/:id" element={<Campaign_Detail/>}/>
             <Route path="/nft/auction" element={<NftAuction />} />
-            <Route path="/nft/auction/:no" element={<NftAuctionView />} />
+            <Route path="/nft/auction/:id" element={<NftAuctionView />} />
             <Route path="/nft/seal" element={<NftSeal />} />
-            <Route path="/nft/Seal/:no" element={<NftSealView />} />
+            <Route path="/nft/Seal/:id" element={<NftSealView />} />
             <Route path="/mypage/" element={<Mypage />} /> 
             <Route path="/support/coin" element={<SupportCoin />} />
             <Route path="/support/NFT" element={<SupportNFT />} />
