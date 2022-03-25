@@ -19,7 +19,8 @@ function SupportNFT() {
     .then(async(res) => {
       if(res) {
        const from = (window.klaytn.selectedAddress)
-       const to = '0x3d7a899250aDBaA826A45603da5240f1ca12C88F'.toLowerCase(); 
+      //  const to = '0x3d7a899250aDBaA826A45603da5240f1ca12C88F';
+      const to ='0xB76417Fe5F4Dbe4206a85ca09070947c3ee9D079';
        const caver = new Caver(window.klaytn);
        const kip17 = new caver.klay.Contract(ABI, contractAddress)
        await kip17.methods.transferFrom(from, to, token)
@@ -30,6 +31,10 @@ function SupportNFT() {
        })
       }
     })
+    const refreshNFTList = NFTList.filter((item)=>  (!(item.contractAddress === contractAddress && item.tokenId === tokenId)))
+    console.log(refreshNFTList)
+    setNFTList([...refreshNFTList]);
+    setErrImgList([]);
   }
 
   const onErrorImg = async (e, tokenUri) => {
