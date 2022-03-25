@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { getAccount } from "../Klaytn/KIP17";
+import BidTable from "../components/bidTable";
 import "../styles/NftAuctionView.css";
-
 
 import dummyNFT from "../components/dummyNFT";
 import dummyBidding from "../components/dummyBidding";
@@ -19,14 +19,15 @@ function NftAuctionView() {
   const [biddingPrice,setbiddingPrice] = useState(0);
 
   const id = useParams().id;
-    
+  const colNames = ['Nickname', 'Address', 'Bidding Price'];
+  
   useEffect (async()=> {  
     setAuctionInfo(dummyNFT[id-1]);  // dummy
     setBiddigInfo(dummyBidding);     // dummy
 
     getAuction();
     getbiddig();
-   
+    // table();
     
     },[]);
 
@@ -36,9 +37,7 @@ function NftAuctionView() {
       // .catch((err) => console.log(err));
     }
 
-    const getbiddig = () => {  
-      
-      // 해당 NFT 게시글에 맞는 응찰내역 호출해서 biddigInfo에 저장
+    const getbiddig = () => {  // 해당 NFT 게시글에 맞는 응찰내역 호출해서 biddigInfo에 저장
 
     }
 
@@ -51,11 +50,11 @@ function NftAuctionView() {
       const EOA = await getAccount();
       setAccount(EOA);
       console.log("account : " + EOA);
-      
+      console.log("account__ : " + account);   // 여긴 안들어가 있지.
       console.log("biddingPrice : "+ biddingPrice);
 
 
-      // DB에 tokenId에 맞는 NFT에 응찰한 나의 주소(EOA)랑 응찰가격(biddingPrice) 을 저장하는 API
+      // DB에 tokenId에 맞는 NFT에 응찰한 주소랑 응찰가격 을 저장하는 API
       // API 성공하면 자동으로 새로고침해서 최고 응찰가 업글 하기.
       
     } else {
@@ -63,6 +62,15 @@ function NftAuctionView() {
     }
     
   }
+
+  // useEffect(()=> {
+  //   console.log("222 account : "+ account)   // 여기에는 들어가있음
+  // },[account])
+
+  // const table = () => {
+  //   columns = useMemo(() => columnData, []);
+  //   data = useMemo(() => biddigInfo,[biddigInfo])
+  //  }
 
 
   
@@ -82,12 +90,10 @@ function NftAuctionView() {
           <input type="number" value={biddingPrice} onChange={(e)=>{setbiddingPrice(e.target.value)}}/>
           <button type="button" className="view__button" onClick={bidding}>응찰</button>
         </div>
-        <div className="view__bidding">
-
+        <div className="view__bidHistoy">
+          <BidTable list={biddigInfo} colNames={colNames}></BidTable>
         </div>
-
       </div>
-
     </div>
   );
 }

@@ -32,3 +32,19 @@
   
   border: solid 1px #000;
 }
+.view__bidHistoy{
+  border: solid 1px #000;
+}
+
+/* bidTable.js */
+/* .header {
+  
+} */
+.address {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 200px;
+  margin : 10px 10px;
+}
