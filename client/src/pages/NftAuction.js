@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/SupportNFT.css"
 import Card from "../components/NFT_card";
 import dummyNFT from "../components/dummyNFT";
-import { Link } from "react-router-dom";
 
 function NftAuction() {
   // 기부 받은 nft 전체 목록 출력.
   // 해당 nft sn
-  // const [DonationNFTList, setDonationNFTList] = useState([]);  // 홈페이지에 기부받은 nft 리스트
-  const [onErrorImg,setOnErrorImg] =useState([]);
+  const [DonationNFTList, setDonationNFTList] = useState([]);  // 홈페이지에 기부받은 nft 리스트
+
 
   // 기부받은 NFT 목록 DonationNFTList 불러오는 API
-
-  const DonationNFTList = dummyNFT;
+  useEffect (async()=> {  
+    setDonationNFTList(dummyNFT);
+    
+  },[]);
 
   return(
     <div id ="supNFT">
