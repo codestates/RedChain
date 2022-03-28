@@ -7,13 +7,13 @@
   color: gray;
 }
 #supNFT-content {
-  width: 100%;
+  box-sizing: content-box;
+  /* width: 100%; */
   height: 100%;
   margin-top: 2rem;
   display: flex;
-  align-content: left;
-  /* margin-left: auto;
-  margin-right: auto; */
+  /* align-content: left; */
+  justify-content: flex-start;
 }
 
 
@@ -37,17 +37,22 @@
 .card__img img{
   width: 100%;
   height: 300px;
-
+  object-fit: cover;
 }
 .card__content {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: 100px;
 }
-.card__name {
+.card__content div {
   text-align: left;
   padding-left: 1rem;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
+  color: #aaa
+}
+.card__price{
+  margin-top: 0.6rem;
 }
 .card__button {
   width: 6rem;

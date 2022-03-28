@@ -20,10 +20,10 @@ const Card = ({NFT, idx, onErrorImg, action, text}) => {
           </div>
         </div>
     )
-  } else {   // NFT 기부 페이지가 아니라면 이걸 리턴
+  } else if(text === "/nft/auction/") {   // auction 페이지면 이걸 리턴
     return (
       <div className="card" >
-        <Link to={{pathname:`${text}${NFT.tokenId}`, state: {NFT: NFT}}} >
+        <Link to={{pathname:`${text}${NFT.tokenId}`}} >
           <div className="card__img">
             {/* <img onError={(e) => onErrorImg(e, NFT.tokenUri)}
                 src={NFT.tokenUri}
@@ -31,8 +31,24 @@ const Card = ({NFT, idx, onErrorImg, action, text}) => {
             <img src={onErrorImg} alt="" />
           </div>
           <div className="card__content">
-            <div className="card__price">price : </div>
-            <div className="card__creatAt">creatAt : </div>
+            <div className="card__price">최고 응찰가 : {NFT.bid_price}  KLAY</div>
+            <div className="card__endAt">종료일 : {NFT.end_at}</div>
+          </div>
+        </Link>
+      </div>
+    )
+  } else {
+    return (
+      <div className="card" >
+        <Link to={{pathname:`${text}${NFT.tokenId}`}} >
+          <div className="card__img">
+            {/* <img onError={(e) => onErrorImg(e, NFT.tokenUri)}
+                src={NFT.tokenUri}
+                alt={idx}/> */}
+            <img src={onErrorImg} alt="" />
+          </div>
+          <div className="card__content">
+            <div className="card__price">판매가 : {NFT.bid_price}  KLAY</div>
           </div>
         </Link>
       </div>
