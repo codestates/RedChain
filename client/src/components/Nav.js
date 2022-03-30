@@ -44,7 +44,7 @@ function Nav() {
       <div id="nav__menu">
         <Link to="/campaign" className="navTit">Campaign</Link>
         <Link to="/nft/auction" className="navTit">Auction</Link>
-        <Link to="/nft/seal" className="navTit">Seal</Link>
+        <Link to="/nft/seal" className="navTit">Random Box</Link>
       </div>
       {button &&
         <>

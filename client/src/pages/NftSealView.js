@@ -13,6 +13,7 @@ function NftSealView() {
   const [biddigInfo, setBiddigInfo] = useState([]);
 
   const id = useParams().id;
+  const colNames = ['구매자', '구매날짜'];
   
   useEffect (async()=> {  
     setSealInfo(dummyNFT[id-1]);  // dummy
@@ -29,8 +30,8 @@ function NftSealView() {
       // .catch((err) => console.log(err));
     }
 
-    const getbiddig = () => {  // 해당 NFT 게시글에 맞는 응찰내역 호출해서 biddigInfo에 저장
-
+    const getbiddig = () => {  // 해당 NFT 게시글에 맞는 구매내역 호출해서 biddigInfo에 저장
+      // 필요정보 : 구매자, 구매날짜
     }
 
 
@@ -56,14 +57,22 @@ function NftSealView() {
         <div className="view__in">
           <div className="view__info">
             <div className="view__startAt">시작날짜 : {sealInfo.create_at}</div>
-            <div className="view__price">판매가: {sealInfo.bid_price}</div>
+            
           </div>
+          <div className="view__info">
+            <div >
+                <div>Current price </div>
+                <span className="view__price">{sealInfo.bid_price} </span>
+                <span> KLAY</span>
+              </div>
+          </div>
+          <div className="view__total">랜덤박스 남은 갯수 : {sealInfo.total}</div>
           <div className="view__input">
             <button type="button" className="view__button" onClick={buy}>구매</button>
           </div>
         </div>
         <div className="view__bidHistoy">
-          <BidTable list={biddigInfo} />
+          <BidTable list={biddigInfo} colNames={colNames} />
         </div>
       </div>
     </div>
