@@ -2,6 +2,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+  --gray: #9a9aa3;
+  --w_gray: rgba(224, 226, 231, 1);
+  --d_gray: #babbc1;
+  --red: #f03e3e;
 }
 html, body {
   height: 100%;
@@ -59,7 +64,7 @@ footer {
   font-size: 1.5rem;
   position: relative;
   bottom: 5px;
-  color: #f03e3e;
+  color: var(--red);
   font-family: Fugaz One;
 }
 .nav-title__picture {
@@ -85,9 +90,9 @@ footer {
   /* height: 100%; */
 }
 .navTit:hover {
-  color: #f03e3e;
+  color: var(--red);
   font-size: 1.1rem;
-  border-bottom: 3px solid #f03e3e;
+  border-bottom: 3px solid var(--red);
   transition: all 0.2s ease-out;
 }
 
@@ -110,7 +115,7 @@ button {
   line-height: 1;
   letter-spacing: -0.02em;
   color: #fff;
-  background-color: #9a9aa3;;
+  background-color: var(--gray);
   border: none;
   cursor: pointer;
 }
@@ -135,7 +140,7 @@ button:active {
   transition: border-color 100ms ease-in;
 }
 .dropdown__toggle:active {  /* 누르고 있는 순간. */
-  border-color: rgba(224, 226, 231, 1);
+  border-color: var(--w_gray);
   color: black;
 }
 .dropdown__menu {
@@ -164,7 +169,7 @@ button:active {
   border-radius: 3px;
 }
 .dropdown__option:hover {
-  background-color: #babbc1;
+  background-color: var(--d_gray);
   color: #fff;
 }
 
@@ -195,7 +200,7 @@ footer span:last-child {
 #home-title div{
   margin-top: 1rem;
   font-size: 1.2rem;
-  color: gray;
+  color: var(--gray);
 }
 #home-content {
   max-width: 900px;
