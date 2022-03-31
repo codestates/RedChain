@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
-import React,{useRef, useState} from "react";
+import React,{useEffect, useRef, useState} from "react";
 import "../styles/App.css"
 import img_logo from "../assets/redChain.png"
 import img_wallet from "../assets/wallet.png"
-import getAccount from "./getAccount";
-
 
 
 function Nav() {
   const menuList = useRef(null);
+  const [button, setButton] = useState(true);
   
   const dropdownChek = () => {
     if(menuList.current.style.display === "block") {
@@ -19,6 +18,21 @@ function Nav() {
     console.log("menuList: "+menuList.current.style.display);
   }
 
+  const showButton = () => {
+    if (window.innerWidth <= 950) {
+      setButton(false);
+    } else {
+      setButton(true);
+    }
+  }
+
+  useEffect(() => {
+    showButton();
+  }, []);
+
+  window.addEventListener('resize', showButton);
+
+  
   return(
     <div id="nav">
       <div id="nav-title">
@@ -29,27 +43,33 @@ function Nav() {
       </div>
       <div id="nav__menu">
         <Link to="/campaign" className="navTit">Campaign</Link>
-        <Link to="/nft" className="navTit">NFT</Link>
-        <Link to="/mypage" className="navTit">Mypage</Link>
+        <Link to="/nft/auction" className="navTit">Auction</Link>
+        <Link to="/nft/seal" className="navTit">Seal</Link>
       </div>
-      <div id="nav__support" className="dropdown">
-        <button type="button" className="dropdown__toggle" onClick={dropdownChek}>Support ▾</button>
-        <ul ref={menuList} className="dropdown__menu" >
-          <li className="dropdown__item">
-            <Link to="/support/coin" > {/* className="navTit" */}
-              <button type="button" className="dropdown__option" onClick={dropdownChek}>Coin</button>
+      {button &&
+        <>
+          <div id="nav__support" className="dropdown">
+            <button type="button" className="dropdown__toggle" onClick={dropdownChek}>Support ▾</button>
+            <ul ref={menuList} className="dropdown__menu" >
+              <li className="dropdown__item">
+                <Link to="/support/coin" >
+                  <button type="button" className="dropdown__option" onClick={dropdownChek}>Coin</button>
+                </Link>
+              </li>
+              <li className="dropdown__item">
+                <Link to="/support/NFT" >
+                  <button type="button" className="dropdown__option" onClick={dropdownChek}>NFT</button>
+                </Link>
+              </li>
+            </ul>
+            </div>
+          <div className="nav__wallet">
+            <Link to="/mypage">
+              <img src={img_wallet}/>
             </Link>
-          </li>
-          <li className="dropdown__item">
-            <Link to="/support/NFT" >   {/* className="navTit" */}
-              <button type="button" className="dropdown__option" onClick={dropdownChek}>NFT</button>
-            </Link>
-          </li>
-        </ul>
-        </div>
-      <div className="nav__wallet">
-        <img src={img_wallet} onClick={()=>{getAccount()}}/>
-      </div>
+          </div>
+        </>
+      }
     </div>
   )
 }

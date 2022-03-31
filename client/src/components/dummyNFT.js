@@ -9,6 +9,7 @@ const dummyNFT = [
     img : "https://source.unsplash.com/featured/?mountain",
     description : "아름다운 산과 물_1",
     create_at : "2022-03-01",
+    end_at : "2022-03-15",
     bidder_address : "address_1",
     bid_price : "1",
   },{
@@ -17,6 +18,7 @@ const dummyNFT = [
     img : "https://source.unsplash.com/featured/?water",
     description : "아름다운 산과 물_2",
     create_at : "2022-03-05",
+    end_at : "2022-03-19",
     bidder_address : "address_2",
     bid_price : "2",
   },{
@@ -25,6 +27,7 @@ const dummyNFT = [
     img : "https://source.unsplash.com/featured/?water,mountain",
     description : "아름다운 산과 물_3",
     create_at : "2022-03-09",
+    end_at : "2022-03-23",
     bidder_address : "address_3",
     bid_price : "3",
   },{
@@ -33,6 +36,7 @@ const dummyNFT = [
     img : "https://source.unsplash.com/featured/?book",
     description : "아름다운 산과 물_4",
     create_at : "2022-03-10",
+    end_at : "2022-03-24",
     bidder_address : "address_4",
     bid_price : "4",
   },{
@@ -41,6 +45,7 @@ const dummyNFT = [
     img : "https://source.unsplash.com/featured/?mango",
     description : "아름다운 산과 물_5",
     create_at : "2022-03-12",
+    end_at : "2022-03-26",
     bidder_address : "address_5",
     bid_price : "5",
   },{
@@ -49,6 +54,7 @@ const dummyNFT = [
     img : "https://source.unsplash.com/featured/?fish",
     description : "아름다운 산과 물_6",
     create_at : "2022-03-15",
+    end_at : "2022-03-29",
     bidder_address : "address_6",
     bid_price : "6",
   }

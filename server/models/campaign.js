@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   campaign.init({
-    name: DataTypes.STRING
+    account: DataTypes.INTEGER,
+    title: DataTypes.INTEGER,
+    endtime: DataTypes.DATE,
+    goal: DataTypes.INTEGER,
+    status: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'campaign',
