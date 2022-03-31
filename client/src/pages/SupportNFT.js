@@ -2,43 +2,53 @@ import {React, useState, useEffect} from "react";
 import "../styles/SupportNFT.css"
 import Card from "../components/NFT_card";
 import axios from "axios";
-import {getAccount, classify} from "../Klaytn/KIP17"
+import {getAccount, classify} from "../Klaytn/util"
 import Caver from 'caver-js';
 import ABI from '../Klaytn/ABI'
 
 function SupportNFT() {
   const [account, setAccount] = useState(null);
-
   const [NFTList, setNFTList] = useState([]);
   const [errImgList, setErrImgList] = useState({});
 
-  const donation = async (contractAddress, tokenId) => {
+  const donation = async (contractAddress, tokenId, tokenURI) => {
     const token = tokenId.slice(2);
-    console.log(token);
+    const to = '0xB76417Fe5F4Dbe4206a85ca09070947c3ee9D079'
+
     await window.klaytn._kaikas.isApproved()
     .then(async(res) => {
       if(res) {
-       const from = (window.klaytn.selectedAddress)
-      //  const to = '0x3d7a899250aDBaA826A45603da5240f1ca12C88F';
-      const to ='0xB76417Fe5F4Dbe4206a85ca09070947c3ee9D079';
-       const caver = new Caver(window.klaytn);
-       const kip17 = new caver.klay.Contract(ABI, contractAddress)
-       await kip17.methods.transferFrom(from, to, token)
-       .send({
-         from,
-         gas: '8500000',
-         gasPrice: null,
-       })
-      }
+        const caver = new Caver(window.klaytn);
+        const myContract = new caver.klay.Contract(ABI, contractAddress);
+        const from = (window.klaytn.selectedAddress);
+        await myContract.methods.safeTransferFrom(from, to, token)
+          .send({
+            from,
+            gas: 300000,
+          })
+          .then(() => {
+            const refreshNFTList = NFTList.filter((item)=>  (!(item.contractAddress === contractAddress && item.tokenId === tokenId)))
+            setNFTList([...refreshNFTList]);
+            setErrImgList([]);
+            recordDB(contractAddress, token, tokenURI);
+          })
+          .catch(err => console.log(err));
+       }
     })
-    const refreshNFTList = NFTList.filter((item)=>  (!(item.contractAddress === contractAddress && item.tokenId === tokenId)))
-    console.log(refreshNFTList)
-    setNFTList([...refreshNFTList]);
-    setErrImgList([]);
   }
 
+  const recordDB = async(tokenAddress, tokenId, tokenURI) => {
+    await axios.post("http://localhost:4000/suport/nft", {
+      tokenAddress,
+      tokenId,
+      tokenURI,
+      contributor: account,
+      }).catch(err => console.log(err));
+  }
+
+  //json파일이여서 이미지가 안뜨면 getImgURL을 실행
   const onErrorImg = async (e, tokenUri) => {
-    const index = e.target.alt
+    const index = e.target.alt;
     await getImgURL(tokenUri, index)
     .then(async()=> {
       e.target.src = await errImgList[index]
@@ -91,7 +101,7 @@ function SupportNFT() {
           <h1>No NFT to display</h1>
           :
           NFTList.map((NFT,idx) => {
-            return <Card NFT={NFT} idx={idx} key={idx} onErrorImg={onErrorImg} action={donation} text={"Support"}/>  /*  */
+            return <Card NFT={NFT} idx={idx} key={idx} onErrorImg={onErrorImg} donation={donation} text={"Support"}/>  /*  */
           })
         }
       </div>
