@@ -1,5 +1,4 @@
 
-
 module.exports = {
     getGroup(name) {
         //DB에서 name에맞는 그룹의주소를 조회
@@ -21,5 +20,16 @@ module.exports = {
         }
         const filterData = [...map.values()];
         return filterData;
-    }
+    },
+    addDays: (date, days) => {
+        const today = new Date();
+        today.setDate(date.getDate() + days);
+        
+        const ymd = (today.toISOString().split("T")[0]);
+        const hms = (today.toTimeString().split(" ")[0]);
+        const result = (ymd + ' ' + hms);
+
+        return (result);
+    },
+  
 }
