@@ -8,15 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      from: {
+      auctionId: {
         type: Sequelize.STRING
       },
-      to: {
+      bidder: {
         type: Sequelize.STRING
       },
-      amount: {
-        type: Sequelize.INTEGER
-      }
+      bid: {
+        type: Sequelize.FLOAT
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
     });
   },
   async down(queryInterface, Sequelize) {
