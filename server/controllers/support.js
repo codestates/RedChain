@@ -1,6 +1,7 @@
 const CaverExtKAS = require('caver-js-ext-kas');
 const caver = new CaverExtKAS();
-const {filteringCA} = require('../functions/index');
+const {filteringCA} = require('../functions/');
+const {auctionlist} = require('../models');
 
 require('dotenv').config();
 caver.initKASAPI(
@@ -39,7 +40,16 @@ module.exports = {
         }
     },
     //KIP17토큰 transfer
-    post : (req,res) => {
-        
+    post : async (req,res) => {
+        const {tokenAddress, tokenId, tokenURI, contributor} = req.body;
+        await auctionlist.create({
+            tokenAddress,
+            tokenId,
+            tokenURI,
+            contributor,
+            status:false,
+        }).then(() => res.status(200).json("ok"))
+        .catch(err => console.log(err))
+        //startAt, endAt 처리 고민;
     },
 }

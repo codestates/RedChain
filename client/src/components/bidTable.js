@@ -1,22 +1,12 @@
 import React from "react";
 import "../styles/NftAuctionView.css"
 
-function BidTable({list, colNames }) {
-
-   const listup = Object.values(list).filter((el,inx) =>{  // 닉넴있음 주소삭제, 닉넴없으면 닉넴 삭제
-    //console.log("el : " + JSON.stringify(el));
-    if(el.nickname === '') {
-      delete el.nickname;
-    }else if(el.nickname){
-      delete el.address;
-    }
-    return el;
-  })
-  
+function BidTable({list }) {
+  const colNames = ['응찰자', '주소', '응찰가격', '응찰날짜'];
   
   return(
     <div>
-      {list.length > 0 && (
+      {true && (
         <table cellSpacing = "0" className="table" >
           <thead className ="table__thead">
             <tr>
@@ -28,10 +18,10 @@ function BidTable({list, colNames }) {
             </tr>
           </thead>
           <tbody className="table__tbody">
-            {Object.values(listup).map((obj, index) => (
+            {Object.values(list).map((obj, index) => (
               <tr key = {index} className ="table__tr">
-                {Object.values(obj).map((value, idx) => (  
-                  idx === 0 
+                {Object.values(obj).map((value, idx) => (  // nick이 있다면 주소X, nick이 없다면 주소O
+                  idx === 1 
                   ? <td key = {idx} className="address" >{value}</td>
                   : <td key = {idx} className="" >{value}</td>
                 ))}

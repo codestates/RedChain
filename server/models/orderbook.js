@@ -14,12 +14,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   orderbook.init({
-    from: DataTypes.STRING,
-    to: DataTypes.STRING,
-    amount: DataTypes.INTEGER
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey:true,
+    },
+    auctionId: DataTypes.INTEGER,
+    bidder: DataTypes.STRING,
+    bid: DataTypes.FLOAT,
+    createdAt: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'orderbook',
+    timestamps: false,
   });
+  // orderbook.associate = models => {
+    // orderbook.belongsTo(models.users, {foreignKey: "account", sourceKey:"bidder"});
+  // }
   return orderbook;
 };
