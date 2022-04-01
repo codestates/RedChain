@@ -5,7 +5,7 @@ import img_logo from "../assets/redChain.png"
 import img_wallet from "../assets/wallet.png"
 
 
-function Nav() {
+function Nav({getWalletInfo}) {
   const menuList = useRef(null);
   const [button, setButton] = useState(true);
   
@@ -63,11 +63,11 @@ function Nav() {
               </li>
             </ul>
             </div>
-          <div className="nav__wallet">
+          <button onClick={getWalletInfo} className="nav__wallet">
             <Link to="/mypage">
               <img src={img_wallet}/>
             </Link>
-          </div>
+          </button>
         </>
       }
     </div>

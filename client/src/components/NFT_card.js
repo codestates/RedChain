@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../styles/SupportNFT.css"
 
 
-const Card = ({NFT, idx, onErrorImg, img, quantity, donation, text}) => {
+const Card = ({NFT, idx, onErrorImg, img, amount, donation, text}) => {
 
   const support = () => { 
     donation(NFT.contractAddress, NFT.tokenId, NFT.tokenUri) ;
@@ -48,7 +48,7 @@ const Card = ({NFT, idx, onErrorImg, img, quantity, donation, text}) => {
             <img src={img} alt="" />
           </div>
           <div className="card__content">
-            <div className="card__price">발행량 : {quantity} 개</div>
+            <div className="card__price">발행량 : {amount} 개</div>
           </div>
         </Link>
       </div>

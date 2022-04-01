@@ -14,13 +14,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   user.init({
-    account: DataTypes.STRING,
-    name: DataTypes.STRING,
-    amount: DataTypes.INTEGER,
-    profileimg: DataTypes.STRING
+    id:{
+      type: DataTypes.INTEGER,
+      primaryKey:true,
+    },
+    account: DataTypes.STRING,  //지갑주소
+    name: DataTypes.STRING,     //닉네임
+    about: DataTypes.STRING,    //자기소개
+    donation: {                  //기부 금액
+      type:DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    profileimg: DataTypes.STRING//이미지파일
   }, {
     sequelize,
     modelName: 'user',
+    timestamps: false,
   });
   return user;
 };

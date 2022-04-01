@@ -1,5 +1,5 @@
 const {orderbook, sequelize} = require('../models');
-const {addDays} = require('../functions/index');
+const {addDays} = require('../functions');
 const date = new Date();
 
 module.exports = {
@@ -15,7 +15,6 @@ module.exports = {
 
     },
     post : async(req,res) => {
-        console.log("들어옴!");
         await orderbook.create({
             auctionId: req.params.id,
             bidder: req.body.bidder,
