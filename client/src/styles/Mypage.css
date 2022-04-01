@@ -1,0 +1,30 @@
+
+.mypage-menu input[type=radio] {
+	display: none;
+}
+#tab-1:checked ~ .tab label:nth-child(1),
+#tab-2:checked ~ .tab label:nth-child(2) {
+	background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: none;
+}
+.content > div {
+	display: none;
+}
+#tab-1:checked ~ .content div:nth-child(1),
+#tab-2:checked ~ .content div:nth-child(2)  {
+	display: block;
+}
+.mypage-menu {
+  
+}
+.mypage-menu__button{
+  width: 10rem;
+  height: 3rem;
+  background-color: #fff;
+  color: black;
+}
+.mypage-menu__button:hover{
+  color: var(--red);
+  border-bottom: solid 2px var(--red);
+  transition: all 0.2s ease-out;
+}

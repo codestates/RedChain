@@ -193,7 +193,41 @@ footer span:last-child {
 }
 
 
+
 /* home */
+.home-img {
+  margin-top: -4rem;
+  margin-bottom: 3rem;
+  background-color: #1e1f20;
+  color:rgb(229, 232, 235);
+  display: flex;
+  
+}
+/* .home-img__img {  /* 삭제 예정 *
+  
+  width: 40rem;
+  height: 40rem;
+  display: flex;
+  justify-content: center;
+  
+  background-image: linear-gradient(rgba(30,31,32,0.2),rgba(30,31,32,0.2)), url(../assets/sedBoy.jpg);
+  background-size: auto 40rem;
+} */
+.home-img img {  
+  width: auto;
+  height: 40rem;
+  /* box-shadow: 5px 5px 30px 10px  #1e1f20 inset; */
+}
+.home-img__contents {
+  width: auto;
+  height: 100%;
+  display: flex;
+
+  /* align-content: flex-end; */
+  
+}
+.home-img__title {}
+
 #home-title {
   font-size: 1.8rem;
 }
