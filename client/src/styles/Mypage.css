@@ -1,3 +1,90 @@
+
+.banner {
+  background: linear-gradient(
+    to left,
+    rgba(234, 234, 234, 1) 80%,
+    rgba(234, 234, 234, 0.75) 85%,
+    rgba(234, 234, 234, 0.5) 90%,
+    rgba(234, 234, 234, 0.25) 95%,
+    rgba(234, 234, 234, 0) 100%
+  ), url("../../public/banner_1.jpg");
+
+  background-size: contain;
+  background-position: left center;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+.banner h1 {
+  color: var(--header);
+  font-size: 48px;
+  font-weight: 700 !important;
+  line-height: 1.56;
+  letter-spacing: -0.8px;
+  margin-left: 20%;
+}
+
+.mypage-menu input[type=radio] {
+	display: none;
+}
+#tab-1:checked ~ .tab label:nth-child(1),
+#tab-2:checked ~ .tab label:nth-child(2) {
+	/* background-color: rgba(0, 0, 0, 0.2); */
+  color: var(--red);
+  border-bottom: solid 2px var(--red);
+  box-shadow: none;
+}
+.content > div {
+	display: none;
+}
+#tab-1:checked ~ .content div:nth-child(1),
+#tab-2:checked ~ .content div:nth-child(2)  {
+	display: block;
+}
+/* .mypage-menu {
+  
+} */
+.tab {
+  overflow: hidden;
+  border-bottom: solid 1px var(--w_gray);
+  display: flex;
+  justify-content: center;
+  margin-top: -3rem;
+}
+.tab label {
+  color: var(--gray);
+  font-size: 1rem;
+  cursor: pointer;
+  width: 15rem;
+  text-align: center;
+  padding: 15px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.content {
+/* background-color: rgba(0, 0, 0, 0.2); */
+min-height: 250px;
+}
+.content > div{
+ padding: 30px;
+ line-height: 1.5;
+ font-size: 17px;
+}
+.mypage-menu__button{
+  width: 10rem;
+  height: 3rem;
+  background-color: #fff;
+  color: black;
+}
+.mypage-menu__button:hover{
+  color: var(--red);
+  border-bottom: solid 2px var(--red);
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
 .Mypage-wrap {
     display: flex; 
     margin: 1.25rem; 
@@ -6,6 +93,7 @@
     
 }
 
+/* 여기부터 중연님 작성한 코드 시작 */
 .Mypage-profileImg {
     margin: 1.25rem; 
     align-items: center; 

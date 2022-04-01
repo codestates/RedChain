@@ -5,10 +5,10 @@
     flex-direction: column;
     justify-content:center;
 }
-.campaign-title {
+/* .campaign-title {
     display:block;
     margin : 50px 0;
-}
+} */
 .campaign-items-wrap {
     display: flex;
     justify-content: space-around;
@@ -18,7 +18,11 @@
 .campaign-items-chevron {
     flex-grow: 1;
 }
-
+.campaign-items-chevron:hover { /* 추가 */
+  color:var(--red);
+  cursor:pointer;
+  transition: all 0.2s ease-out;
+}
 
 .campaign-items {
     flex-grow: 5;
@@ -75,4 +79,32 @@
 .campaign-item-center-info progress {
     /* margin: 0 10px; */
     width: 300px;
+}
+
+/* 배너 */
+.banner {
+  background: linear-gradient(
+    to left,
+    rgba(234, 234, 234, 1) 80%,
+    rgba(234, 234, 234, 0.75) 85%,
+    rgba(234, 234, 234, 0.5) 90%,
+    rgba(234, 234, 234, 0.25) 95%,
+    rgba(234, 234, 234, 0) 100%
+  ), url("../../public/banner_1.jpg");
+
+  background-size: contain;
+  background-position: left center;
+  width: 100%;  /* 다른코드랑 달리 추가된것. */
+  height: 200px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.banner h1 {
+  color: var(--header);
+  font-size: 48px;
+  font-weight: 700 !important;
+  line-height: 1.56;
+  letter-spacing: -0.8px;
+  margin-left: 20%;
 }

@@ -1,18 +1,33 @@
-#supNFT-title {
-  font-size: 1.8rem;
+.banner {
+  background: linear-gradient(
+    to left,
+    rgba(234, 234, 234, 1) 80%,
+    rgba(234, 234, 234, 0.75) 85%,
+    rgba(234, 234, 234, 0.5) 90%,
+    rgba(234, 234, 234, 0.25) 95%,
+    rgba(234, 234, 234, 0) 100%
+  ), url("../../public/banner_1.jpg");
+
+  background-size: contain;
+  background-position: left center;
+  height: 200px;
+  display: flex;
+  align-items: center;
 }
-#supNFT-title div{
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  color: gray;
+.banner h1 {
+  color: var(--header);
+  font-size: 48px;
+  font-weight: 700 !important;
+  line-height: 1.56;
+  letter-spacing: -0.8px;
+  margin-left: 20%;
 }
+
 #supNFT-content {
   box-sizing: content-box;
-  /* width: 100%; */
   height: 100%;
   margin-top: 2rem;
   display: flex;
-  /* align-content: left; */
   justify-content: flex-start;
 }
 

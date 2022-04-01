@@ -82,8 +82,9 @@ function Campaign() {
 
   return (
     <div className="campaign">
-      <h1  className="campaign-title">Campaign</h1>
-      
+      <div className="banner">
+        <h1>Campaign</h1>
+      </div>
       <div className="campaign-items-wrap">
           <FaChevronLeft onClick={preBtn} className="campaign-items-chevron"/>
           <ul className="campaign-items">

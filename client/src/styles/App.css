@@ -7,6 +7,7 @@
   --w_gray: rgba(224, 226, 231, 1);
   --d_gray: #babbc1;
   --red: #f03e3e;
+  --header: #555555;
 }
 html, body {
   height: 100%;
@@ -34,7 +35,7 @@ nav {
   box-shadow: rgb(4 17 29 / 25%) 0px 0px 11px 0px;
 }
 main {
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
   padding-bottom: 3rem; 
 } 
 footer {
@@ -65,7 +66,7 @@ footer {
   position: relative;
   bottom: 5px;
   color: var(--red);
-  font-family: Fugaz One;
+  font-family: 'Fugaz One', cursive;
 }
 .nav-title__picture {
   width: 55px;
@@ -193,7 +194,51 @@ footer span:last-child {
 }
 
 
+
 /* home */
+.home-img {
+  margin-top: -4rem;
+  margin-bottom: 3rem;
+  background-color: #1e1f20;
+  color:rgb(229, 232, 235);
+  display: flex;
+  
+}
+/* .home-img__img {  /* 삭제 예정 *
+  
+  width: 40rem;
+  height: 40rem;
+  display: flex;
+  justify-content: center;
+  
+  background-image: linear-gradient(rgba(30,31,32,0.2),rgba(30,31,32,0.2)), url(../assets/sedBoy.jpg);
+  background-size: auto 40rem;
+} */
+.home-img img {  
+  width: auto;
+  height: 40rem;
+  /* box-shadow: 5px 5px 30px 10px  #1e1f20 inset; */
+}
+.home-img__contents {
+  width: auto;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+.home-img__title {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  font-family: 'Nanum Brush Script', cursive;
+}
+.home-img__text {
+  font-size: 1.2rem;
+  color: var(--gray);
+  padding: 0 0 1rem 1rem ;
+}
+
 #home-title {
   font-size: 1.8rem;
 }
