@@ -44,10 +44,13 @@ function NftSeal() {
 
   return(
     <div id ="supNFT">
-      <div id="supNFT-title">
+      <div className="banner">
+        <h1>CRYPTO Seal</h1>
+      </div>
+      {/* <div id="supNFT-title">
         <h2>CRYPTO Seal</h2>
         <div>기부 받은 NFT 경매페이지이며, 이곳의 수익은 후원금액으로 사용됩니다.</div>
-      </div>
+      </div> */}
       <div id="supNFT-contents">
         { DonationNFTList === null ? 
           <h1>No NFT to display</h1>

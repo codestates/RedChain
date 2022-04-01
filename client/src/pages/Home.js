@@ -36,8 +36,8 @@ function Home() {
         <img src={sedBoy} alt="sed Boy" /> 
         {/* <div className="home-img__img"></div> */}
         <div className="home-img__contents">
-          <div className="home-img__title">Red Chain, 여러분의 사랑을 기다리고 있습니다.</div>
-          <div >저희 Red chain은 블록체인 기술을 통해 투명하게 운영하고 있습니다.</div>
+          <div className="home-img__title">Red Chain,<br /> 여러분의 사랑을 기다리고 있습니다.</div>
+          <div className="home-img__text">저희 Red chain은 블록체인 기술을 통해 투명하게 운영되고 있습니다.</div>
         </div>
       </div>
       <div id="home-title">

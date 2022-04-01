@@ -92,9 +92,8 @@ function SupportNFT() {
 
   return(
     <div id ="supNFT">
-      <div id="supNFT-title">
-        <h2>NFT 기부</h2>
-        <div>여러분께 기부 받은 NFT의 판매금액은 후원금액으로 사용됩니다.</div>
+      <div className="banner">
+        <h1>NFT 기부</h1>
       </div>
       <div id="supNFT-contents">
         { NFTList === null ? 

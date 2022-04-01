@@ -13,7 +13,7 @@ function NftSealView() {
   const [biddigInfo, setBiddigInfo] = useState([]);
 
   const id = useParams().id;
-  const colNames = ['구매자', '구매날짜'];
+  const colNames = ['순번','구매자', '구매날짜'];
   
   useEffect (async()=> {  
     setSealInfo(dummyNFT[id-1]);  // dummy
@@ -56,7 +56,7 @@ function NftSealView() {
       <div className="view__contents"> {/* NFT 관련 내용. */}
         <div className="view__in">
           <div className="view__info">
-            <div className="view__startAt">시작날짜 : {sealInfo.create_at}</div>
+            <div className="view__startAt">Sale starts  {sealInfo.create_at}</div>
             
           </div>
           <div className="view__info">
