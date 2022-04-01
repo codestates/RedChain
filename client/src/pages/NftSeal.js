@@ -12,11 +12,11 @@ function NftSeal() {
   // 기부 받은 nft 전체 목록 출력.
   // 해당 nft sn
 
-  const [DonationNFTList, setDonationNFTList] = useState([]);  // nft seal 리스트
+  const [cryptoSeal, setCryptoSeal] = useState([]);  // nft seal 리스트
 
   // Seal NFT 목록 DonationNFTList 불러오는 APInst DonationNFTList = dummyNFT;
   const BuyButton = async() => {
-    const contractAddress = "0x4491c6193C54CCF990cbb47E2900372Ca32F16cf";
+    const contractAddress = "0x0b198d07Ffaf020411e36C997e6805e7cA74f1Ae";
     await window.klaytn.enable();
     const caver = new Caver(window.klaytn)
     const sealContract = new caver.klay.Contract(SealABI, contractAddress);
@@ -27,7 +27,7 @@ function NftSeal() {
       gasPrice: null,
     }).then(async(tx) => {
       //0xde0b6b3a7640000 = 10 ** 18 = 1klay
-      if(tx.value = "0xde0b6b3a7640000") {
+      if(tx.value) {
         await axios.post('http://localhost:4000/buy/seal', {
           // transactionHash: tx.transactionHash,
           account : window.klaytn.selectedAddress,
@@ -38,7 +38,7 @@ function NftSeal() {
   }
 
   useEffect (async()=> {  
-    setDonationNFTList(season1);
+    setCryptoSeal(season1);
     
   },[]);
 
@@ -52,11 +52,11 @@ function NftSeal() {
         <div>기부 받은 NFT 경매페이지이며, 이곳의 수익은 후원금액으로 사용됩니다.</div>
       </div> */}
       <div id="supNFT-contents">
-        { DonationNFTList === null ? 
+        { cryptoSeal === null ? 
           <h1>No NFT to display</h1>
           :
-          DonationNFTList.map((NFT,idx) => {
-            return <Card NFT={NFT} idx={idx} key={idx} img={NFT.img} quantity={NFT.quantity} text={"/nft/seal/"}/> 
+          cryptoSeal.map((Seal,idx) => {
+            return <Card NFT={Seal} idx={idx} key={idx} img={Seal.img} amount={Seal.amount} text={"/nft/seal/"}/> 
           })
         }
       </div>

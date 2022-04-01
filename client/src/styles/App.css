@@ -106,6 +106,7 @@ footer {
   display: grid;
   justify-content: end;
   margin-right: 1rem;
+  background-color:white;
 }
 .nav__wallet:hover {
   cursor:pointer;

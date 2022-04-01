@@ -4,7 +4,7 @@ import axios from 'axios';
 import { classify } from "./Klaytn/util";
 import './styles/App.css';
 import './styles/reset.css';
-
+import { getAccount } from "./Klaytn/util";
 
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -22,7 +22,7 @@ import NftSealView from "./pages/NftSealView";
 
 function App() {
 
-  const [errImgList, setErrImgList] = useState({});
+  const [account, setAccount] = useState(null);
   const [auctionList, setAuctionList] = useState([]);  // 홈페이지에 기부받은 nft 리스트
 
   const getAuctionList = async () => {
@@ -39,12 +39,15 @@ function App() {
       setAuctionList(res.data);
     }).catch(err => console.log(err));
   }
-
+  const getWalletInfo = async () => {
+    const wallet = await getAccount();
+    setAccount(wallet[0]);
+  }
 
   return (
     <Router>
       <nav>
-        <Nav />
+        <Nav getWalletInfo={getWalletInfo}/>
       </nav>
       <main>
         <div className="container">
@@ -56,7 +59,7 @@ function App() {
             <Route path="/nft/auction/:id" element={<NftAuctionView auctionList={auctionList}/>} />
             <Route path="/nft/seal" element={<NftSeal />} />
             <Route path="/nft/Seal/:id" element={<NftSealView />} />
-            <Route path="/mypage/" element={<Mypage />} /> 
+            <Route path="/mypage/" element={<Mypage account={account}/>} /> 
             <Route path="/support/coin" element={<SupportCoin />} />
             <Route path="/support/NFT" element={<SupportNFT />} />
           </Routes>
