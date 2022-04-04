@@ -93,13 +93,13 @@ function Campaign() {
               </Link>
               <Link to={{pathname:`/campaign/detail/${centerItem.id}`}}>
               <li className="campaign-items-center"
-              style={{backgroundImage:`url(/campaignImg/${centerItem.id}.jpeg)`}}>메인캠페인
+              style={{backgroundImage:`url(/campaignImg/${centerItem.id}.jpeg)`}}>
                    
                       <div className="campaign-item-center-info">
                       <h1>{centerItem.title}</h1>
                       <p>{centerItem.group}</p>
-                      <p>D-Day: {centerItem.dday}</p>
-                      <progress value="22" max="100"></progress>
+                      <p>종료일: {centerItem.endAt}</p>
+                      <progress value={centerItem.amunt / centerItem.goal * 100} max="100"></progress>
                       <p>{centerItem.amount}</p>
                     </div>
               </li>

@@ -8,18 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      account: {
-        type: Sequelize.STRING
-      },
+     
       name: {
         type: Sequelize.STRING
       },
-      amount: {
-        type: Sequelize.INTEGER
-      },
-      profileimg: {
+      account: {
         type: Sequelize.STRING
+      },
+      countDonation: {
+        type: Sequelize.INTEGER,
+        defaultValue:0,
       }
+   
+      
     });
   },
   async down(queryInterface, Sequelize) {

@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import "../styles/SupportCoin.css";
 import redchainLogo from '../assets/redChain.png'
-import { getAccount } from "../Klaytn/KIP17";
+import { getAccount } from "../Klaytn/util";
 import Caver from 'caver-js';
-
+import {campaignAddress} from '../Klaytn/contracts';
+import campaignABI from '../Klaytn/CampaignABI';
 
 function SupportCoin() {
   const [account, setAccount] = useState(null);
@@ -15,10 +16,11 @@ function SupportCoin() {
   const [isCompleted, setIsCompleted] = useState(false);
 
   const groupList = [
-    {value: "0x4acd0f73286AE8688Fcb5A53a0941eE09b6c19AA", name: "유니세프" },
-    {value: "구세군지갑주소", name: "구세군" },
-    {value: "적십자지갑주소", name: "적십자" },
-    {value: "희망의집지갑주소", name: "희망의집" },
+    //{value: campaignAddress.키값, name:키값}
+    {value: campaignAddress.campaign1, name: "캠페인1" },
+    {value: campaignAddress.campaign2, name: "캠페인2" },
+    {value: campaignAddress.campaign3, name: "캠페인3" },
+    {value: campaignAddress.campaign4, name: "캠페인4" },
   ]
 
   const getAmount = (e) => {
@@ -40,17 +42,28 @@ function SupportCoin() {
       alert("후원 금액을 다시 확인해 주세요...");
     }
     else {
-    const txhash =  await caver.klay.sendTransaction({
-        type: 'VALUE_TRANSFER',
-        from: account[0],
-        to,
-        value: caver.utils.toPeb(amount,'KLAY'),
-        gas: 21000,
+    const campaignContract = await new caver.klay.Contract(campaignABI, to);
+    await campaignContract.methods.fundraising().send({
+      from: account[0],
+      to,
+      value: caver.utils.toPeb(amount,'KLAY'),
+      gas: 50000,
+    })
+    // await caver.klay.sendTransaction({
+    //     type: 'VALUE_TRANSFER',
+    //     from: account[0],
+    //     to,
+    //     value: caver.utils.toPeb(amount,'KLAY'),
+    //     gas: 50000,
+    // })
+      .then(async(txhash) => {
+        setReceipt(txhash.transactionHash);
+        setAmount(0);
+        setIsCompleted(true);
+        //DB에 user DB업데이트. campaigns=모금액 추가, users = amount에 추가  
       })
-      console.log(txhash);
-      setReceipt(txhash.transactionHash);
-      setAmount(0);
-      setIsCompleted(true);
+      
+      
     }
   }
 

@@ -41,6 +41,7 @@ module.exports = {
     },
     //KIP17토큰 transfer
     post : async (req,res) => {
+        console.log(req.body);
         const {tokenAddress, tokenId, tokenURI, contributor} = req.body;
         await auctionlist.create({
             tokenAddress,

@@ -21,16 +21,20 @@ router.get('/', (req,res) => {
     res.json("🔥 Running server!!");
 });
 //현재 진행중인 캠페인의 정보를 받아온다. : Campaign
+router.use('/campaign/detail/:id', controller.campaign.filter);
 router.use('/campaign', controller.campaign.get);
 
+//Home 화면
+router.use('/home', controller.home.get);
+
 //유저의 프로필정보를 받아오고, 업데이트 : Mypage
-router.post('/user/:account', upload.single('profileImg') ,controller.user.update);
+// router.post('/user/:account', upload.single('profileImg') ,controller.user.update);
 router.use('/user/:account', controller.user.get);
-router.use('/create/:account', controller.user.post);
-router.use('/update/:account', controller.user.update);
+router.use('/create/:account', upload.single('profileImg'),controller.user.post);
+router.use('/update/:account', upload.single('profileImg'),controller.user.update);
 
 router.use('/support/nft/:account', controller.support.get);
-router.use('/support/nft/', controller.support.post);
+router.use('/support/nft', controller.support.post);
 
 
 //옥션 중인 아이템 클릭시 세부페이지로 이동하면 표시해야할 정보
@@ -40,7 +44,8 @@ router.use('/orderbook/:id', controller.orderbook.post);
 //진행중인 옥션을 모두 표기
 router.get('/auction', controller.auction.get);
 
-router.use('/nft/seal/:id', controller.seal.get);
+router.use('/seal/amount', controller.seal.get);
+router.use('/seal/history', controller.sealHistory.get);
 router.use('/buy/seal', controller.seal.post);
 
 

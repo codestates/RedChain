@@ -4,6 +4,7 @@ const date = new Date();
 
 module.exports = {
     get: async(req,res) => {
+        try{
         const [results, metadata] = await sequelize.query(
                 `SELECT id, bidder,bid, createdAt 
                 FROM orderbooks 
@@ -11,7 +12,9 @@ module.exports = {
             )
             console.log(results);
         res.status(200).json(results);
-
+        } catch(err) {
+            throw(err);
+        }
 
     },
     post : async(req,res) => {

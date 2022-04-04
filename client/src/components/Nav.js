@@ -26,6 +26,7 @@ function Nav({getWalletInfo}) {
     }
   }
 
+
   useEffect(() => {
     showButton();
   }, []);

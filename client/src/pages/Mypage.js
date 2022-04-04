@@ -1,8 +1,11 @@
-import React from "react";
+import axios from "axios";
+import {useState} from "react";
 import Profile from "../components/Profile";
 import "../styles/Mypage.css"
 
-function Mypage({account}) {
+function Mypage({userInfo, account}) {
+
+
   return(
     <div className="mypage-menu">
         <div className="banner">
@@ -18,7 +21,7 @@ function Mypage({account}) {
       </div>
       <div class="content">
         <div class="content-dis">
-        <Profile account={account}/>
+        <Profile userInfo={userInfo} account={account}/>
         </div>
         <div class="content-dis">
         기부 내역 내용

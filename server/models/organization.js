@@ -14,11 +14,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   organization.init({
-    name: DataTypes.STRING,
-    account: DataTypes.STRING
+    id:{
+      type: DataTypes.INTEGER,
+      primaryKey:true,
+    },
+    account: DataTypes.STRING,  //지갑주소
+    title: DataTypes.STRING,     //닉네임
+    endAt: DataTypes.STRING,    //자기소개
+    amount: {                  //기부 금액
+      type:DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   }, {
     sequelize,
     modelName: 'organization',
+    timestamps: false,
   });
+  organization.associate = models => {
+    organization.hasMany(models.campaign, {foreignKey: "organization", sourceKey:"account"});
+  }
   return organization;
 };

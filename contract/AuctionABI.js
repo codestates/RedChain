@@ -247,6 +247,5 @@ const AuctionABI = [
             "name": "Cancel",
             "type": "event"
         }
-    
 ];
 module.exports = AuctionABI;
