@@ -23,3 +23,6 @@ redchain은 블록체인을 통한 투명하고 공정한 모금활동을 목표
            - auction 취소시 입찰된 가격 환불
     
            - auction 입찰 기록 출력
+
+    crypto-seal 페이지
+           - 랜덤 KIP37 판매
