@@ -11,16 +11,16 @@ interface IKIP17 {
 }
 
 contract RedchainAucntion {
-    event Start();
+    event Start(uint256 startAt, uint256 endAt);
     event End(address buyer, uint256 winningBid);
     event BidRecord(address indexed sender, uint256 amount);
     event withdrawRecord(address indexed bidder, uint256 amount);
-    event Cancel();
+    event Cancel(uint256 timestamp);
 
     address payable seller;
-    uint256 endAt;
+    uint256 public endAt;
 
-    IKIP17 public  nft;
+    IKIP17 public nft;
     uint256 public nftId;
 
     enum Status {
@@ -54,10 +54,12 @@ contract RedchainAucntion {
 
         status = Status.Active;
         endAt = block.timestamp + 3 days;
-        emit Start();
+        emit Start(block.timestamp, endAt);
     }
     function cancel() external payable OnlySeller {
-        require(status == Status.Active, "auction is invalid");
+        require(status != Status.End, "auction is invalid");
+        require(block.timestamp < endAt, "auction ended...");
+
         status = Status.Inactive;
         refund(highestBidder, highestBid);
 
@@ -66,7 +68,8 @@ contract RedchainAucntion {
         
         delete nft;
         delete nftId;
-        emit Cancel();
+        endAt = 0;
+        emit Cancel(block.timestamp);
     }
 
     function end() external OnlySeller {
@@ -81,13 +84,16 @@ contract RedchainAucntion {
             nft.transfer(seller, nftId);
         }
         status == Status.End;
+        //트랜스퍼해줘야함 하이스트비더한테
         emit End(highestBidder, highestBid);
     }
 
     function bid() external payable {
-        require(status == Status.Active, "Auction is inactived");
-        require(block.timestamp < endAt, "Actuion is ended");
-        require(msg.value > highestBid, "value is too low");
+        require(status == Status.Active, "Auction is inactived");  //활성화된상태
+        require(block.timestamp < endAt, "Actuion is ended");      //시간엄수
+        require(msg.sender != seller, "You are seller!!");         //관리자의 입찰방지
+        require(msg.sender != highestBidder, "You already done!"); //재입찰방지
+        require(msg.value > highestBid, "value is too low");       //낮은금액 입찰안받음
         
         address previousBidder = highestBidder;
         uint256 previousBid = highestBid;

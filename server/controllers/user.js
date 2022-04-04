@@ -23,7 +23,6 @@ module.exports = {
        
     },
     post : async(req,res) => {
-        console.log(req.body);
         const {name, about} = req.body;
         const {account} = req.params;
         const  profileImg = req.file.path;
@@ -31,7 +30,7 @@ module.exports = {
             name,
             account,
             about,
-            profileimg: profileImg,
+            profileImg,
         }).then((data) => {
             if(data) {
                 return res.status(200).json("ok");
@@ -41,13 +40,14 @@ module.exports = {
         // res.status(200).json("ok");
         },
     update: async(req,res) => {
+        console.log(req.body);
         const {name, about} = req.body;
         const {account} = req.params;
         const  profileImg = req.file.path;
         await user.update({
              name,
              about,
-             profileimg:profileImg
+             profileimg,
             },
             {where:{account,}
             }

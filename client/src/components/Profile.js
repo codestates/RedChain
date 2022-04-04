@@ -4,10 +4,10 @@ import {MdPerson} from 'react-icons/md';
 import { getAccount } from '../Klaytn/util';
 import '../styles/Mypage.css';
 
-function Profile({account}) {
-    const [name, setName] = useState('');
-    const [about, setAbout] = useState('');
-    const [file, setFile] = useState(null);
+function Profile({userInfo, account}) {
+    const [name, setName] = useState(userInfo.name);
+    const [about, setAbout] = useState(userInfo.about);
+    const [file, setFile] = useState(userInfo.profileImg);
     const [isConnected, setIsConnected] = useState(false);
     const [isRegestered, setIsRegesterd] = useState(false); //db에 등록된유저인지
     const imgUploader = useRef(null);
@@ -27,8 +27,8 @@ function Profile({account}) {
   
       const checkLogined = async() => {
           if(isConnected === false) {
-               const user = await getAccount();
-                 setIsConnected(true);
+               await getAccount();
+               setIsConnected(true);
           } 
            await axios.get(`http://localhost:4000/user/${account}`)
            .then((res) => {
@@ -40,14 +40,14 @@ function Profile({account}) {
           
       }
   
-    const onSubmit = async (e) => {
-          e.preventDefault();
-          checkLogined();
-          let formData = new FormData();
+    const onSubmit = async () => {
+          const formData = new FormData();
           formData.append('name', name);
           formData.append('about', about);
           formData.append('profileImg', file);
-          //등록이 되어있다면
+          
+         
+
           let apiurl;
           if(isRegestered) {
               apiurl = "update";
@@ -64,6 +64,7 @@ function Profile({account}) {
           })
           .then(()=> {
         console.log("ok");
+        setIsRegesterd(true);
           }).catch((err) => {
               console.log(err);
           })
@@ -97,7 +98,7 @@ function Profile({account}) {
                           <input onChange={changeName} value={name} type="text" maxLength="12" name="floating_email" className="Mypage-profileInfo-email " placeholder="NickName" required="" />
                           <textarea onChange={changeAbout} value={about} className="Mypage-profileInfo-bio" placeholder='indroduce yourself'> </textarea>
                       </div>
-                      <button onClick={onSubmit} type="submit" className="Mypage-button">Edit</button>
+                      <button onClick={onSubmit} className="Mypage-button">Edit</button>
                   </div>
               </div>
               <div>

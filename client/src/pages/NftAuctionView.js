@@ -8,7 +8,6 @@ import Caver from 'caver-js';
 import AuctionABI from '../Klaytn/AuctionABI'
 
 
-
 function NftAuctionView({auctionList}) {
   const id = useParams().id;
 
@@ -83,6 +82,7 @@ function NftAuctionView({auctionList}) {
                 tokenURI: auctionInfo.tokenURI,
                 auctionAddress: auctionInfo.auctionAddress,
                 highestBid: biddingPrice,
+                contributor: auctionInfo.contributor,
               })
           })
           .catch(err => console.log(err));
@@ -116,7 +116,7 @@ function NftAuctionView({auctionList}) {
       </div>
       <div className="view__contents"> {/* NFT 관련 내용. */}
         <div className="view__donated" >
-          <span>donated by </span>
+          <span>donated by {auctionInfo.contributor}</span>
           <div>{auctionInfo.donor}</div>  {/* 여기에 기증자 이름!!!! */}
         </div>
 

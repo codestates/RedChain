@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     contributor: {
       type:DataTypes.STRING,
-      allowNull: false,
     },
     tokenAddress: { 
       type: DataTypes.STRING,

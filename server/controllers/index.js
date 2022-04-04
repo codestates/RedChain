@@ -5,4 +5,6 @@ module.exports = {
     auction: require('./auction'),
     support: require('./support'),
     seal : require('./seal'),
+    sealHistory:require('./sealHistory'),
+    home : require('./home'),
 }

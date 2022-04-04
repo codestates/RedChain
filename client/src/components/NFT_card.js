@@ -42,15 +42,12 @@ const Card = ({NFT, idx, onErrorImg, img, amount, donation, text}) => {
   }  else if(text === "/nft/seal/") {   // auction 페이지면 이걸 리턴
     return (
       <div className="card" >
-        <Link to={{pathname:`${text}${NFT.tokenId}`}} >
           <div className="card__img">
-          
             <img src={img} alt="" />
           </div>
           <div className="card__content">
             <div className="card__price">발행량 : {amount} 개</div>
           </div>
-        </Link>
       </div>
     )
   } 

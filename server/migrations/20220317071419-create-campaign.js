@@ -1,4 +1,7 @@
 'use strict';
+
+const { sequelize } = require("../models");
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('campaigns', {
@@ -8,21 +11,30 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      account: {
-        type: Sequelize.INTEGER
-      },
       title: {
-        type: Sequelize.INTEGER
+        type:Sequelize.STRING,
       },
-      endtime: {
-        type: Sequelize.DATE
+      contract: {
+        type: Sequelize.STRING,
       },
       goal: {
         type: Sequelize.INTEGER
       },
+      organization: Sequelize.STRING,  //지갑주소
+      endAt: {
+        type: Sequelize.STRING
+      },
+      goal: {
+        type: Sequelize.INTEGER
+      },
+      amount: {                  //현재 모금액
+        type:Sequelize.INTEGER,
+        defaultValue: 0,
+      },
       status: {
-        type: Sequelize.BOOLEAN
-      }
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
     });
   },
   async down(queryInterface, Sequelize) {

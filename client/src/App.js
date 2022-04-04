@@ -19,11 +19,17 @@ import SupportNFT from "./pages/SupportNFT";
 import NftAuctionView from "./pages/NftAuctionView";
 import NftSealView from "./pages/NftSealView";
 
-
 function App() {
 
   const [account, setAccount] = useState(null);
+  const [userInfo, setUserInfo] = useState({
+    name:"",
+    about:"",
+    profileImg:null,
+    });
   const [auctionList, setAuctionList] = useState([]);  // 홈페이지에 기부받은 nft 리스트
+  
+
 
   const getAuctionList = async () => {
     await axios.get('http://localhost:4000/auction')
@@ -39,9 +45,19 @@ function App() {
       setAuctionList(res.data);
     }).catch(err => console.log(err));
   }
+
+
+  const getUserInfo = async(EOA) => {
+    await axios.get(`http://localhost:4000/user/${EOA}`)
+    .then((res) => {
+      setUserInfo(res.data);
+    }).catch(err => console.log(err));
+  }
+
   const getWalletInfo = async () => {
     const wallet = await getAccount();
     setAccount(wallet[0]);
+    await getUserInfo(wallet[0]);
   }
 
   return (
@@ -59,7 +75,7 @@ function App() {
             <Route path="/nft/auction/:id" element={<NftAuctionView auctionList={auctionList}/>} />
             <Route path="/nft/seal" element={<NftSeal />} />
             <Route path="/nft/Seal/:id" element={<NftSealView />} />
-            <Route path="/mypage/" element={<Mypage account={account}/>} /> 
+            <Route path="/mypage/" element={<Mypage userInfo={userInfo} account={account}/>} /> 
             <Route path="/support/coin" element={<SupportCoin />} />
             <Route path="/support/NFT" element={<SupportNFT />} />
           </Routes>

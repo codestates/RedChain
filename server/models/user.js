@@ -21,11 +21,15 @@ module.exports = (sequelize, DataTypes) => {
     account: DataTypes.STRING,  //지갑주소
     name: DataTypes.STRING,     //닉네임
     about: DataTypes.STRING,    //자기소개
-    donation: {                  //기부 금액
+    amount: {                  //기부 금액
       type:DataTypes.INTEGER,
       defaultValue: 0,
     },
-    profileimg: DataTypes.STRING//이미지파일
+    countDonation: {
+      type: DataTypes.INTEGER,
+      defaultValue:0,
+    },
+    profileImg: DataTypes.STRING//이미지파일
   }, {
     sequelize,
     modelName: 'user',

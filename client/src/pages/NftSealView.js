@@ -1,57 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { getAccount } from "../Klaytn/KIP17";
 import BidTable from "../components/bidTable";
 import "../styles/NftAuctionView.css";
-
-import dummyNFT from "../components/dummyNFT";
-import dummyBidding from "../components/dummyBidding";
-
+import randomboxImg from "../assets/randombox.gif"
+import axios from 'axios';
+import {sealBuy} from '../Klaytn/util';
 
 function NftSealView() {
   const [sealInfo, setSealInfo] = useState([]);
   const [biddigInfo, setBiddigInfo] = useState([]);
+  const [randomboxAmount, setRandomboxAmount] = useState(0);
 
   const id = useParams().id;
   const colNames = ['순번','구매자', '구매날짜'];
   
-  useEffect (async()=> {  
-    setSealInfo(dummyNFT[id-1]);  // dummy
-    setBiddigInfo(dummyBidding);     // dummy
+ 
 
-    getAuction();
-    getbiddig();
-    
-    },[]);
+ const getAmountInfo = async() => {
+  await axios('http://localhost:4000/seal/amount')
+    .then((res) => {
+      setRandomboxAmount(res.data);
+    }).catch(err => console.log(err)); 
+ }
+ const getHisotry = async() => {
+   await axios.get('http://localhost:4000/seal/history')
+   .then(res => setBiddigInfo[res.data])
+   .catch(err => console.log(err));
+ }
 
-    const getAuction = () => {  // tokenId가 id 인 NFT 호출해서 sealInfo에 저장.
-      // await axios.get(`http://localhost:4000/nft/seal/${id}`)
-      // .then((res)=> {})
-      // .catch((err) => console.log(err));
-    }
-
-    const getbiddig = () => {  // 해당 NFT 게시글에 맞는 구매내역 호출해서 biddigInfo에 저장
-      // 필요정보 : 구매자, 구매날짜
-    }
-
-
-  const buy = async() => {  // 구매 함수
-    // 1. 나의 주소가 필요. 
-    // 2. 디비에 해당 tokenId에 맞는 것이 판매 됨을 표시하고 트랜스퍼 처리하기.
-
-    const account = await getAccount();  // account 에 내 주소값 들어가있음.
-
-    // await axios.post(`http://localhost:4000/nft/seal`)
-    // .then((res)=> {})
-    // .catch((err) => console.log(err));    
+  const onClickHandler = async() => {  // 구매 함수
+    await sealBuy();
     
   }
-  
+
+  useEffect (async()=> {  
+    getAmountInfo();
+    getHisotry();
+  },[]);
 
   return(
     <div className="view">
       <div className="view__img">  {/* NFT 이미지 */}
-        <img src={sealInfo.img} alt="" />
+        <img src={randomboxImg} alt="" />
       </div>
       <div className="view__contents"> {/* NFT 관련 내용. */}
         <div className="view__in">
@@ -61,14 +51,14 @@ function NftSealView() {
           </div>
           <div className="view__info">
             <div >
-                <div>Current price </div>
-                <span className="view__price">{sealInfo.bid_price} </span>
-                <span> KLAY</span>
+                <div>RandomBox price </div>
+                <span className="view__price"> </span>
+                <span> 20 KLAY</span>
               </div>
           </div>
-          <div className="view__total">랜덤박스 남은 갯수 : {sealInfo.total}</div>
+          <div className="view__total">랜덤박스 남은 갯수 : {randomboxAmount}</div>
           <div className="view__input">
-            <button type="button" className="view__button" onClick={buy}>구매</button>
+            <button type="button" className="view__button" onClick={onClickHandler}>구매</button>
           </div>
         </div>
         <div className="view__bidHistoy">

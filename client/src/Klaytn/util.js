@@ -1,4 +1,9 @@
+import Caver from 'caver-js';
+import SealABI from './SealABI';
+import { sealAddress } from './contracts';
+import axios from 'axios';
 //kaikas연결
+
 const getAccount = async() => {
     return await window.klaytn.enable();
 }
@@ -29,4 +34,25 @@ const addDays = (date, days) => {
     return (result);
 }
 
-export {getAccount, classify, addDays,}
+
+const sealBuy = async() => {
+    await window.klaytn.enable();
+    const caver = new Caver(window.klaytn)
+    const sealContract = new caver.klay.Contract(SealABI, sealAddress);
+    await sealContract.methods.buy().send({
+      from: window.klaytn.selectedAddress,
+      gas: '50000',
+      value: caver.utils.toPeb(20,'KLAY'),
+      gasPrice: null,
+    }).then(async(tx) => {
+      if(tx.value) {
+        await axios.post('http://localhost:4000/buy/seal', {
+          account : window.klaytn.selectedAddress,
+          tokenId : parseInt(tx.events[0].raw.data),
+        }).then((res)=> console.log(res));
+      }
+    }).catch(err => console.log(err));
+  }
+
+
+export {getAccount, classify, addDays, sealBuy}

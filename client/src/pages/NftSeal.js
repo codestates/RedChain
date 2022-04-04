@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../styles/SupportNFT.css"
 import Card from "../components/NFT_card";
-import dummyNFT from "../components/dummyNFT";
 import randomboxImg from "../assets/randombox.gif"
-import axios from "axios";
-import Caver from 'caver-js';
-import SealABI from "../Klaytn/SealABI";
 import season1 from '../assets/randombox1/season1';
+import {Link} from 'react-router-dom';
+import {sealBuy} from '../Klaytn/util';
 
 function NftSeal() {
   // 기부 받은 nft 전체 목록 출력.
@@ -15,26 +13,8 @@ function NftSeal() {
   const [cryptoSeal, setCryptoSeal] = useState([]);  // nft seal 리스트
 
   // Seal NFT 목록 DonationNFTList 불러오는 APInst DonationNFTList = dummyNFT;
-  const BuyButton = async() => {
-    const contractAddress = "0x0b198d07Ffaf020411e36C997e6805e7cA74f1Ae";
-    await window.klaytn.enable();
-    const caver = new Caver(window.klaytn)
-    const sealContract = new caver.klay.Contract(SealABI, contractAddress);
-    await sealContract.methods.buy().send({
-      from: window.klaytn.selectedAddress,
-      gas: '50000',
-      value: caver.utils.toPeb(1,'KLAY'),
-      gasPrice: null,
-    }).then(async(tx) => {
-      //0xde0b6b3a7640000 = 10 ** 18 = 1klay
-      if(tx.value) {
-        await axios.post('http://localhost:4000/buy/seal', {
-          // transactionHash: tx.transactionHash,
-          account : window.klaytn.selectedAddress,
-          tokenId : parseInt(tx.events[0].raw.data),
-        }).then((res)=> console.log(res));
-      }
-    }).catch(err => console.log(err));
+  const onClickHandler = async() => {
+   await sealBuy();
   }
 
   useEffect (async()=> {  
@@ -47,10 +27,7 @@ function NftSeal() {
       <div className="banner">
         <h1>CRYPTO Seal</h1>
       </div>
-      {/* <div id="supNFT-title">
-        <h2>CRYPTO Seal</h2>
-        <div>기부 받은 NFT 경매페이지이며, 이곳의 수익은 후원금액으로 사용됩니다.</div>
-      </div> */}
+
       <div id="supNFT-contents">
         { cryptoSeal === null ? 
           <h1>No NFT to display</h1>
@@ -61,17 +38,20 @@ function NftSeal() {
         }
       </div>
       <div className = "randombox"> 
-          <h1>RandomBox</h1>
+      <Link to={{pathname:`${"/nft/seal/history"}`}} >
           <div className="randombox-box">
+          <h1>RandomBox</h1>
+
             <div className="randombox-img">
               <img src={randomboxImg}></img>
             </div>
             <div>
-              30 Klay
-            </div>
-            <button onClick={BuyButton}>구매하기</button>
-          </div>
+              <p>20 Klay</p>
+            <button className="randombox-button" onClick={onClickHandler}>구매하기</button>
 
+            </div>
+          </div>
+      </Link>
       </div>
     </div>
   );

@@ -4,22 +4,23 @@ import Card from "../components/NFT_card";
 import axios from "axios";
 import {getAccount, classify} from "../Klaytn/util"
 import Caver from 'caver-js';
-import ABI from '../Klaytn/ABI'
+import KIP17ABI from '../Klaytn/KIP17ABI'
 
 function SupportNFT() {
   const [account, setAccount] = useState(null);
   const [NFTList, setNFTList] = useState([]);
   const [errImgList, setErrImgList] = useState({});
 
-  const donation = async (contractAddress, tokenId, tokenURI) => {
+  const donation = async (CA, tokenId, tokenURI) => {
     const token = tokenId.slice(2);
-    const to = '0xB76417Fe5F4Dbe4206a85ca09070947c3ee9D079'
+    const to = '0x05f59eEb87556A66654E9D6cb58d59f5a69aB5c0'
+    // const to = '0x3d7a899250aDBaA826A45603da5240f1ca12C88F'
 
     await window.klaytn._kaikas.isApproved()
     .then(async(res) => {
       if(res) {
         const caver = new Caver(window.klaytn);
-        const myContract = new caver.klay.Contract(ABI, contractAddress);
+        const myContract = new caver.klay.Contract(KIP17ABI, CA);
         const from = (window.klaytn.selectedAddress);
         await myContract.methods.safeTransferFrom(from, to, token)
           .send({
@@ -27,10 +28,10 @@ function SupportNFT() {
             gas: 300000,
           })
           .then(() => {
-            const refreshNFTList = NFTList.filter((item)=>  (!(item.contractAddress === contractAddress && item.tokenId === tokenId)))
-            setNFTList([...refreshNFTList]);
+            const refreshNFTList = NFTList.filter((nft,index)=> (nft.contractAddress !== CA && nft.tokenId !== tokenId)); 
+            setNFTList(refreshNFTList);
             setErrImgList([]);
-            recordDB(contractAddress, token, tokenURI);
+            recordDB(CA, token, tokenURI);
           })
           .catch(err => console.log(err));
        }
@@ -38,7 +39,7 @@ function SupportNFT() {
   }
 
   const recordDB = async(tokenAddress, tokenId, tokenURI) => {
-    await axios.post("http://localhost:4000/suport/nft", {
+    await axios.post("http://localhost:4000/support/nft", {
       tokenAddress,
       tokenId,
       tokenURI,
