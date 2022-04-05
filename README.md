@@ -26,3 +26,22 @@ redchain은 블록체인을 통한 투명하고 공정한 모금활동을 목표
 
     crypto-seal 페이지
            - 랜덤 KIP37 판매
+***************************
+caver-js 리액트에서 import에러 해결법
+1. 추가 모듈 설치
+npm install crypto-browserify https-browserify os-browserify stream-browserify stream-http url assert
+2. node_moduels/react-scripts/config/webpack.config.js파일 수정
+    ![image](https://user-images.githubusercontent.com/90881940/161673647-5a6cb854-2ca4-4a6c-995b-6b3f3d8e5d80.png)
+
+resolve:{
+	fallback:{
+        fs: false,
+        net: false,
+        stream: require.resolve('stream-browserify'),
+        crypto: require.resolve('crypto-browserify'),
+        http: require.resolve('stream-http'),
+        https: require.resolve('https-browserify'),
+        os: require.resolve('os-browserify/browser'),
+      },
+	moduel: ...
+}
