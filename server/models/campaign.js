@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey:true,
     },
-    contract:DataTypes.STRING,
+    contract: DataTypes.STRING,
     organization: DataTypes.STRING,  //지갑주소
     title: DataTypes.STRING,     //캠페인이름
     goal: DataTypes.INTEGER,      //목표금액

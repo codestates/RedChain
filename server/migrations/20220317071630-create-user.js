@@ -15,11 +15,16 @@ module.exports = {
       account: {
         type: Sequelize.STRING
       },
+      about: Sequelize.STRING,
+      amount: {                  //기부 금액
+        type:Sequelize.INTEGER,
+        defaultValue: 0,
+      },
       countDonation: {
         type: Sequelize.INTEGER,
         defaultValue:0,
-      }
-   
+      },
+      profileImg: Sequelize.STRING//이미지파일
       
     });
   },

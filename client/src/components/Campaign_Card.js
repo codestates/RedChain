@@ -10,7 +10,7 @@ function Campaign_Card({item}) {
                       <p>{item.group}</p>
                       <p>종료일: {item.endAt}</p>
                       <progress value="3" max="100"></progress>
-                      <p>{item.amount}</p>
+                      <p>{item.amount} Klay</p>
                   </div>
               </li>
     )
