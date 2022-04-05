@@ -56,6 +56,7 @@ function Campaign() {
       setCenterItem(campaignInfo[1])
       setRightItem(campaignInfo[2])
     } else {
+      console.log(rightItem.id);
       setLeftItem(campaignInfo[leftItem.id + 1])
       setCenterItem(campaignInfo[centerItem.id + 1])
       setRightItem(campaignInfo[rightItem.id + 1])
@@ -66,6 +67,8 @@ function Campaign() {
   const getCampaignInfo = async() => {
     await axios.get("http://localhost:4000/campaign")
    .then((res) => {
+     console.log(res.data);
+
      setLeftItem(res.data[0]);
      setCenterItem(res.data[1]);
      setRightItem(res.data[2]);
@@ -99,8 +102,8 @@ function Campaign() {
                       <h1>{centerItem.title}</h1>
                       <p>{centerItem.group}</p>
                       <p>종료일: {centerItem.endAt}</p>
-                      <progress value={centerItem.amunt / centerItem.goal * 100} max="100"></progress>
-                      <p>{centerItem.amount}</p>
+                      <progress value={(centerItem.amunt / centerItem.goal * 100).toString()} max="100"></progress>
+                      <p>{centerItem.amount} Klay</p>
                     </div>
               </li>
               </Link>
