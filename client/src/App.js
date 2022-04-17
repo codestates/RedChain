@@ -32,7 +32,7 @@ function App() {
 
 
   const getAuctionList = async () => {
-    await axios.get('http://localhost:4000/auction')
+    await axios.get(process.env.REACT_APP_API_URL+'/auction')
     .then(async(res) => {
       for(let i = 0; i< res.data.length; i++) {
         const tokenURI = classify(res.data[i].tokenURI);
@@ -48,7 +48,7 @@ function App() {
 
 
   const getUserInfo = async(EOA) => {
-    await axios.get(`http://localhost:4000/user/${EOA}`)
+    await axios.get(process.env.REACT_APP_API_URL+`/user/${EOA}`)
     .then((res) => {
       setUserInfo(res.data);
     }).catch(err => console.log(err));

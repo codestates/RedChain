@@ -17,13 +17,13 @@ function NftSealView() {
  
 
  const getAmountInfo = async() => {
-  await axios('http://localhost:4000/seal/amount')
+  await axios(process.env.REACT_APP_API_URL+'/seal/amount')
     .then((res) => {
       setRandomboxAmount(res.data);
     }).catch(err => console.log(err)); 
  }
  const getHisotry = async() => {
-   await axios.get('http://localhost:4000/seal/history')
+   await axios.get(process.env.REACT_APP_API_URL+'/seal/history')
    .then(res => setBiddigInfo[res.data])
    .catch(err => console.log(err));
  }

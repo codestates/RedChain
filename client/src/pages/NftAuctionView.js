@@ -35,7 +35,7 @@ function NftAuctionView({auctionList}) {
 
  
     const getOrderbook = async() => {  // 응찰내역
-      await axios.get(`http://localhost:4000/auction/detail/${id}`)
+      await axios.get(process.env.REACT_APP_API_URL+`/auction/detail/${id}`)
       .then((res)=> {
         if(res.data === null) {
           setOrderbook(0);

@@ -60,11 +60,18 @@ function SupportCoin() {
         setReceipt(txhash.transactionHash);
         setAmount(0);
         setIsCompleted(true);
+        getWalletBalance(caver,account);
         //DB에 user DB업데이트. campaigns=모금액 추가, users = amount에 추가  
       })
       
       
     }
+  }
+
+  const getWalletBalance = async(caverobj, wallet) => {
+    const newBalance = await caverobj.klay.getBalance(wallet[0]);
+    const result = await caverobj.utils.fromPeb(newBalance);
+    setBalance(result);
   }
 
 
@@ -84,9 +91,7 @@ function SupportCoin() {
     setAccount(EOA);
     const tempCaver = new Caver(window.klaytn);
     setCaver(tempCaver);
-    const searchBalance = await tempCaver.klay.getBalance(EOA[0]);
-    const result = tempCaver.utils.convertFromPeb(searchBalance);
-    setBalance(result);
+    getWalletBalance(tempCaver, EOA);
     
   },[]);
  

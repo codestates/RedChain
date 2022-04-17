@@ -46,7 +46,7 @@ const sealBuy = async() => {
       gasPrice: null,
     }).then(async(tx) => {
       if(tx.value) {
-        await axios.post('http://localhost:4000/buy/seal', {
+        await axios.post(process.env.REACT_APP_API_URL+'/buy/seal', {
           account : window.klaytn.selectedAddress,
           tokenId : parseInt(tx.events[0].raw.data),
         }).then((res)=> console.log(res));

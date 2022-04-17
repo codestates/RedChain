@@ -11,7 +11,7 @@ function Campaign_Detail() {
     const [capaignDetail, setCampaignDetail] = useState({});
 
     useEffect(async()=> {
-    await axios.get(`http://localhost:4000/campaign/detail/${id}`)
+    await axios.get(process.env.REACT_APP_API_URL+`/campaign/detail/${id}`)
     .then((res)=> {
         console.log(res.data[0])
         setCampaignDetail(res.data[0]);

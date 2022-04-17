@@ -39,7 +39,7 @@ function SupportNFT() {
   }
 
   const recordDB = async(tokenAddress, tokenId, tokenURI) => {
-    await axios.post("http://localhost:4000/support/nft", {
+    await axios.post(process.env.REACT_APP_API_URL+"/support/nft", {
       tokenAddress,
       tokenId,
       tokenURI,
@@ -60,7 +60,7 @@ function SupportNFT() {
   //json파일이여서 image를 파싱해야할 경우 실행
   const getImgURL = async(tokenUri,index) => {
     let metadata_url = await classify(tokenUri);
-    await axios.post('http://localhost:4000/metadata',{
+    await axios.post(process.env.REACT_APP_API_URL+'/metadata',{
       metadata_url,
     })
     .then((res)=> {
@@ -73,7 +73,7 @@ function SupportNFT() {
 
   const getNFTInfo = async(EOA) => {
     if(EOA) {
-      await axios.get(`http://localhost:4000/support/nft/${EOA}`)
+      await axios.get(process.env.REACT_APP_API_URL+`/support/nft/${EOA}`)
       .then((res)=> {
         console.log(res.data);
         setNFTList(res.data);
