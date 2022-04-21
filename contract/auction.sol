@@ -68,6 +68,9 @@ contract RedchainAucntion {
         
         delete nft;
         delete nftId;
+        //캔슬시 하이스트 비더 초기화.
+        delete highestBidder;
+        highestBid = 0;
         endAt = 0;
         emit Cancel(block.timestamp);
     }

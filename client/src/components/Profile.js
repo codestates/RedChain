@@ -30,7 +30,7 @@ function Profile({userInfo, account}) {
                await getAccount();
                setIsConnected(true);
           } 
-           await axios.get(`http://localhost:4000/user/${account}`)
+           await axios.get(process.env.REACT_APP_API_URL+`/user/${account}`)
            .then((res) => {
                setName(res.data.name);
                setAbout(res.data.about);
@@ -56,7 +56,7 @@ function Profile({userInfo, account}) {
               apiurl = "create"
           }
           console.log(apiurl);
-          await axios.post(`http://localhost:4000/${apiurl}/${account}`, formData,
+          await axios.post(process.env.REACT_APP_API_URL+`/${apiurl}/${account}`, formData,
           {
               headers: {
                   'Content-Type': 'multipart/form-data'
