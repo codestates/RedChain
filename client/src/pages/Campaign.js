@@ -65,6 +65,7 @@ function Campaign() {
   }
 
   const getCampaignInfo = async() => {
+    //axios주소변경
     await axios.get(process.env.REACT_APP_API_URL+"/campaign")
    .then((res) => {
      console.log(res.data);

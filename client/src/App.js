@@ -20,7 +20,7 @@ import NftAuctionView from "./pages/NftAuctionView";
 import NftSealView from "./pages/NftSealView";
 
 function App() {
-
+  
   const [account, setAccount] = useState(null);
   const [userInfo, setUserInfo] = useState({
     name:"",

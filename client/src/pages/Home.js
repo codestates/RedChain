@@ -16,6 +16,7 @@ function Home() {
   useEffect(async () => {    //  정보를 어떻게 넘겨주는지 확인 필요! 통째로 주는지 or 필요한 정보만 주는지...
     // /total api 적용.
     try {
+      //axios주소변경
       axios.get(process.env.REACT_APP_API_URL+"/home")
       .then(res => {
         console.log(res.data);

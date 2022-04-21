@@ -11,6 +11,7 @@ function Campaign_Detail() {
     const [capaignDetail, setCampaignDetail] = useState({});
 
     useEffect(async()=> {
+        //axios 주소변경
     await axios.get(process.env.REACT_APP_API_URL+`/campaign/detail/${id}`)
     .then((res)=> {
         console.log(res.data[0])
