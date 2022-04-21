@@ -15,7 +15,7 @@ function NftSealView() {
   const colNames = ['순번','구매자', '구매날짜'];
   
  
-
+ //axios주소변경
  const getAmountInfo = async() => {
   await axios(process.env.REACT_APP_API_URL+'/seal/amount')
     .then((res) => {

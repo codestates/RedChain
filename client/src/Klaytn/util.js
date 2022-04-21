@@ -34,7 +34,7 @@ const addDays = (date, days) => {
     return (result);
 }
 
-
+//axios주소변경
 const sealBuy = async() => {
     await window.klaytn.enable();
     const caver = new Caver(window.klaytn)

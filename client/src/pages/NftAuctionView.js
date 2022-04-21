@@ -34,7 +34,7 @@ function NftAuctionView({auctionList}) {
   const diff = times - today;
 
  
-    const getOrderbook = async() => {  // 응찰내역
+    const getOrderbook = async() => {  // 응찰내역, axios주소변경
       await axios.get(process.env.REACT_APP_API_URL+`/auction/detail/${id}`)
       .then((res)=> {
         if(res.data === null) {
@@ -62,7 +62,8 @@ function NftAuctionView({auctionList}) {
 
         if(tx) {
           now = addDays(new Date(), 0);
-          await axios.post(`http://localhost:4000/orderbook/${id}`, {
+          //axios주소변경
+          await axios.post(process.env.REACT_APP_API_URL+`/orderbook/${id}`, {
             bidder: account[0],
             bid:biddingPrice,
             createdAt: now,
